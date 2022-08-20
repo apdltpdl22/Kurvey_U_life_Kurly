@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SurveyModal from './components/SurveyModal';
+import Login from './components/Login';
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -10,6 +11,7 @@ function App() {
       {
         modal && <SurveyModal close={() => setModal(false)}/> 
       }
+      <Login />
     </div>
   );
 }
