@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 import SurveyModal from './components/SurveyModal';
-import Login from './components/Login';
 
 function App() {
   const [modal, setModal] = useState(false);
@@ -11,7 +11,10 @@ function App() {
       {
         modal && <SurveyModal close={() => setModal(false)}/> 
       }
-      <Login />
+      <nav>
+        <Link to='login'>Login</Link>
+        <Link to='signup'>SignUp</Link>
+      </nav>
     </div>
   );
 }

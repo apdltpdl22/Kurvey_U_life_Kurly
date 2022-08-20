@@ -1,11 +1,13 @@
-.LoginBox {
+.SignUpBox {
   text-align: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content:center;
   align-items: center;
   width: 100%;
   margin-top: 10vh;
 }
 
 .Contents {
+  text-align: start;
 }

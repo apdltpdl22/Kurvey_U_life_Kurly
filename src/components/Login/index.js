@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './login.module.css';
-// import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import { loginAccount } from '../../features/user'
+import axios from 'axios'
 
 export default function Login(props) {
   const [inputId, setInputId] = useState('')
@@ -17,12 +19,15 @@ export default function Login(props) {
   
   // 로그인 버튼 클릭 이벤트
   const onClickLogin = () => {
-    console.log('click login')
+    if (inputId === "" || inputPw === "") {
+      window.alert("아이디와 비밀번호를 입력해주세요.")
+      return;
+    }
   }
 
   return (
     <div className={styles.LoginBox}>
-      <div className={styles.Content}>
+      <div className={styles.Contents}>
         <h2 className='title'>Login</h2>
         <div>
           <label htmlFor='input_id'>ID: </label>
