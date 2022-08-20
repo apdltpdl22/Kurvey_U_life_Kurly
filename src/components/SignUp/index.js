@@ -57,6 +57,7 @@ export default function SignUp(props) {
     const credentials = {
       inputId, inputPw, inputPwChk
     }
+    setError(false);
     axios.post('url', credentials)
     .then(res => {
       navigate('/login')
