@@ -31,7 +31,7 @@ export default function SurveyModal({close}) {
 
   const lifeStyleOnClick = id => {
     const buttonGroup = document.querySelectorAll('.lifeStyleButton');
-    const colors = ['#b3a6d3', '#674ea7', '#483674'];
+    const colors = ['#483674', '#674ea7', '#b3a6d3'];
     // console.log('buttonGroup', buttonGroup)
 
     const fakeItems = lifeStyles;
