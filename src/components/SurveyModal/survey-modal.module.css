@@ -13,13 +13,19 @@
 
 /* Modal Content/Box */
 .modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #ffffff;
-  margin: 10% auto; 
   padding: 20px 60px 20px 60px;
-  border: 1px solid #888;
-  width: 45%; 
-  height: 80%;
+  width: 45%;
   border-radius: 50px;
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 43px rgb(0 0 0 / 29%);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
 }
 
 .inputBox {
@@ -67,8 +73,8 @@
 
 .lifeStyleBox button {
   padding: 15px;
-  border: 1.5px solid #929292;
-  border-radius: 76px;
+  border: 2px solid #929292;
+  border-radius: 40px;
   width: 22%;
 }
 
@@ -79,8 +85,8 @@
 .lifeStyleBox button p {
   font-family: 'Nanum Gothic', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
+  font-weight: 900;
+  font-size: 20px;
   line-height: 15px;
   text-align: center;
 }
@@ -92,7 +98,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 40px auto;
+  margin: 50px auto;
   border: 1.5px solid #929292;
   border-radius: 20px;
   padding: 10px;
