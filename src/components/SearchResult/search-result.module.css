@@ -3,12 +3,21 @@
 }
 
 .board {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
-.item_photos{
+.searchResult {
+  margin: 0px auto;
+  width: 90%;
+}
+
+.searchKeyword{
+  text-align: center;
+}
+
+/* .item_photos{
   flex-direction: row;
   justify-content: start;
-}
+} */
