@@ -1,19 +1,118 @@
-.SignUpBox {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
+.wrap {
   width: 100%;
-  margin-top: 10vh;
+  height: 100vh;
+  background-color: #5f0080;
 }
 
-.Contents {
-  text-align: start;
+.wrap h2 {
+  margin: 0 auto;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  color: #dedede;
 }
 
-.radio {
-  width:15px;
-  height: 15px;
-  margin: 0px;
+.wrap a {
+  margin: 0 auto;
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  color: #dedede;
+}
+
+.wrap .register {
+  overflow: hidden;
+  background-color: white;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+
+  transform: translate(-50%, -50%);
+  transition: transform 300ms, box-shadow 300ms;
+  box-shadow: 5px 10px 10px rgba((2, 128, 144, 1), 0.2);
+}
+
+.register > input {
+  font-family: 'Asap', sans-serif;
+  display: block;
+  border-radius: 5px;
+  font-size: 16px;
+  background: white;
+  width: 100%;
+  border: 0;
+  padding: 10px 10px;
+  margin: 15px -10px;
+  border: 1px solid #dedede
+}
+
+.register > button {
+  font-family: 'Asap', sans-serif;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 80px;
+  border: 0;
+  padding: 10px 0;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: #5f0080;
+}
+
+.register > button:hover {
+  background-color: darken(#5f0080, 5%);
+}
+
+.inputBox > input {
+  font-family: 'Asap', sans-serif;
+  display: block;
+  border-radius: 5px;
+  font-size: 16px;
+  background: white;
+  width: 100%;
+  border: 0;
+  padding: 10px 10px;
+  margin: 15px -10px;
+}
+
+input[type='date'] {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #dedede;
+  width: 90%;
+  margin: 18px auto;
+  color: #888;
+  font-family: 'Lato', 'sans-serif';
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.wrap .select{
+  margin: 10px;
+}
+
+.wrap select{
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #dedede;
+  width: 100%;
+  margin-bottom: 18px;
+  color: #888;
+  font-family: 'Lato', 'sans-serif';
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.wrap a{
+  margin: 0 auto;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  color: #dedede;
 }
