@@ -13,7 +13,10 @@ function App() {
       }
       <nav>
         <Link to='login'>Login</Link>
+        <br/>
         <Link to='signup'>SignUp</Link>
+        <br/>
+        <Link to='search-result'>SearchResult</Link>
       </nav>
     </div>
   );

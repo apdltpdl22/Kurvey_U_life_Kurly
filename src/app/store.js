@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import LoggedStateReducer from '../features/user'
+import userReducer from '../features/user'
 
 export const store = configureStore({
   reducer: {
-    isLogged : LoggedStateReducer,
+    user: userReducer
   },
-});
+})
