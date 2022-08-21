@@ -12,12 +12,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     loginAccount(state, action) {
-      state.isLogged = true;
-      state.userName = action.payload.userName;
-      state.userId = action.payload.userId;
-      state.jwtToken = action.payload.jwtToken;
-      console.log(state)
-      console.log(action.payload)
+     return action.payload;
     },
     logoutAccount(state) {
       state.isLogged = false;
