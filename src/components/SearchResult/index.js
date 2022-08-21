@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../../assets/png/kurly_logo.png';
 import styles from './search-result.module.css'
+import ProductList from './ProductList';
 // import axios from 'axios';
 
 export default function SearchResult(props) {
@@ -48,31 +49,31 @@ export default function SearchResult(props) {
       products : 
       [
         {
-          id: 101, imgSrc : '', earlyDelivery: true, 
+          id: 101, earlyDelivery: true, 
+          brand:null, productName:'아오리 사과 1.5kg(10입내)', price:0, detail:'풋풋한 매력 가득한 제철 사과' 
+        },
+        {
+          id: 102, earlyDelivery: true, 
+          brand:null, productName:'GAP 사과', price:0, detail:'깨끗히 자란 유기농 사과' 
+        },
+        {
+          id: 103, earlyDelivery: true, 
+          brand:'선물세트', productName:'프리미엄 과일 바구니 세트', price:0, detail:'클래식한 느낌을 담은 과일 선물' 
+        },
+        {
+          id: 104, earlyDelivery: true, 
           brand:null, productName:'', price:0, detail:'' 
         },
         {
-          id: 102, imgSrc : '', earlyDelivery: true, 
+          id: 105, earlyDelivery: true, 
           brand:null, productName:'', price:0, detail:'' 
         },
         {
-          id: 103, imgSrc : '', earlyDelivery: true, 
+          id: 106, earlyDelivery: true, 
           brand:null, productName:'', price:0, detail:'' 
         },
         {
-          id: 104, imgSrc : '', earlyDelivery: true, 
-          brand:null, productName:'', price:0, detail:'' 
-        },
-        {
-          id: 105, imgSrc : '', earlyDelivery: true, 
-          brand:null, productName:'', price:0, detail:'' 
-        },
-        {
-          id: 106, imgSrc : '', earlyDelivery: true, 
-          brand:null, productName:'', price:0, detail:'' 
-        },
-        {
-          id: 107, imgSrc : '', earlyDelivery: true, 
+          id: 107, earlyDelivery: true, 
           brand:null, productName:'', price:0, detail:'' 
         },
       ]
@@ -114,18 +115,13 @@ export default function SearchResult(props) {
           {/* card carousel with hover */}
         </div>
 
-        <div id='search_results'>
-        {allProducts.map((list) => 
-          <div id='result'>
-            <div id='item_list'>
-              <h3 id='item_category'>{list.category}</h3>
-              {list.products.map((product) => 
-                <p id='item_photos'>{product.name}</p>
-              )}
-            </div>
-            <br/>
+        <div className={styles.searchLists}>
+          {allProducts.map((list) =>
+          <div className={styles.eachLists}>
+              <h3>{list.category}</h3>
+              <ProductList products = {list.products}/>
           </div>
-        )}
+          )}
         </div>
       </div>
     </div>
