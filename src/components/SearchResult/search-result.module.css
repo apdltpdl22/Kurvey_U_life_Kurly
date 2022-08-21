@@ -1,0 +1,14 @@
+.logo {
+  width:82px;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item_photos{
+  flex-direction: row;
+  justify-content: start;
+}

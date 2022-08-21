@@ -11,3 +11,9 @@
 .Contents {
   text-align: start;
 }
+
+.radio {
+  width:15px;
+  height: 15px;
+  margin: 0px;
+}

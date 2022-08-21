@@ -116,11 +116,11 @@ button {
 }
 
 /* input 기본 스타일 초기화 */
-input {
+/* input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
+} */
 
 .inputNumber {
   border: none;
