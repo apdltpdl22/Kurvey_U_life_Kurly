@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from 'react';
 import styles from './login.module.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { loginAccount, selectUser } from '../../features/user'
 import axios from 'axios'
+import {useInput} from '../../hooks/useInput';
+
 
 export default function Login(props) {
-  const [inputId, setInputId] = useState('')
-  const [inputPw, setInputPw] = useState('')
+  const [inputId, changeId] = useInput('')
+  const [inputPw, changePw] = useInput('')
   const dispatch = useDispatch()
   const selector = useSelector(selectUser);
 
-  // Input에 값 들어올 때 변수 update
-  const handleInputId = (e) => {
-    setInputId(e.target.value)
-  }
-
-  const handleInputPw = (e) => {
-    setInputPw(e.target.value)
-  }
-  
   // 로그인 버튼 클릭 이벤트
   const onClickLogin = (e) => {
     e.preventDefault();
@@ -63,11 +55,11 @@ export default function Login(props) {
         <h2 className='title'>Login</h2>
         <div>
           <label htmlFor='input_id'>ID: </label>
-          <input type='text' name='input_id' value={inputId} onChange={handleInputId} />
+          <input type='text' id="input_id" name='input_id' value={inputId} onChange={changeId} />
         </div>
         <div>
           <label htmlFor='input_pw'>PW: </label>
-          <input type='text' name='input_pw' value={inputPw} onChange={handleInputPw} />
+          <input type='password' id="input_pw" name='input_pw' value={inputPw} onChange={changePw} />
         </div>
         <div>
           <button type='button' onClick={onClickLogin}>Login</button>
