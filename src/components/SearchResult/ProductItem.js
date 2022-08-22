@@ -4,8 +4,7 @@ import style from './product-item.module.css'
 function ProductItem({item}) {
   return (
     <div id='ItemCard' className={style.ItemCard}>
-      <img 
-        className={style.img} src={`/products/${item.id}.jpg`}/>
+      <img className={style.img} src={`/products/${item.id}.jpg`} alt="제품 이미지"/>
       <p className={style.small_grey_font}>{item.earlyDelivery ? '샛별배송': ''}</p>
       <p className={style.black_product_name}>
         <span>{item.brand ? `[${item.brand}]` : ''}</span>

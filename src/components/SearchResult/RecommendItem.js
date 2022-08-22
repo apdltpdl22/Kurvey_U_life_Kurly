@@ -4,7 +4,7 @@ import style from './recommend-item.module.css'
 function RecommendItem({item}) {
   return (
     <div id='ItemCard' className={style.ItemCard}>
-      <img className={style.img} src={`/products/${item.id}.jpg`}/>
+      <img className={style.img} src={`/products/${item.id}.jpg`} alt="추천 제품 이미지"/>
       <div  className={style.overlay}></div>
       <div className={style.middle}>
         <div className={style.text}>{item.productName}</div>

@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Routes, Route,} from 'react-router-dom';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
-import SearchResult from './components/SearchResult';
 import './index.css';
 import { Provider } from 'react-redux'
 import {store} from './app/store'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// pages
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import SearchResult from './components/SearchResult';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
