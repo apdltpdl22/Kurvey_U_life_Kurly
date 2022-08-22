@@ -1,9 +1,9 @@
 import React from 'react';
-import Item from './ProductItem'
+import Item from './RecommendItem'
+import styles from './recommend-list.module.css'
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 
-function ProductList({products}) {
+function RecommendList({products}) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -23,8 +23,8 @@ function ProductList({products}) {
   };
 
   return (
-    <div className='list'>
-      <Carousel 
+    <div>
+      <Carousel className={styles.RecommendList}
       responsive={responsive}
       swipeable={false}
       draggable={false}
@@ -39,4 +39,4 @@ function ProductList({products}) {
   );
 }
 
-export default ProductList;
+export default RecommendList;
