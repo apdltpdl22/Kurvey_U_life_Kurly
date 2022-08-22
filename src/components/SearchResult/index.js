@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import logo from '../../assets/png/kurly_logo.png';
 import {useInput} from '../../hooks/useInput';
 import styles from './search-result.module.css';
 import ProductList from './ProductList';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import PaymentModal from '../PaymentModal';
 // import axios from 'axios';
 
@@ -233,10 +233,10 @@ export default function SearchResult() {
     },
   ];
 
-  const openPaymentModal = (productId) => {
+  const openPaymentModal = productId => {
     setProductId(productId);
     setPaymentModal(true);
-  }
+  };
 
   // 장바구니 버튼 클릭 시 바로 구매
   return (
@@ -333,7 +333,29 @@ export default function SearchResult() {
             </button>
           </div>
         </div>
-        <div id="category_btn"></div>
+        <div className={styles.category}>
+          <div className={styles.menuBox}>
+            <span></span>
+            <span>카테고리</span>
+          </div>
+          <ul className={styles.menuList}>
+            <li>
+              <span>신상품</span>
+            </li>
+            <li>
+              <span>베스트</span>
+            </li>
+            <li>
+              <span>알뜰쇼핑</span>
+            </li>
+            <li>
+              <span>특가/혜택</span>
+            </li>
+          </ul>
+          <div className={styles.infoBox}>
+            <span>샛별・낮</span> 배송안내
+          </div>
+        </div>
         <div className={styles.searchResult}>
           <h2 className={styles.searchKeyword}>
             '<span>{searchKeyword}</span>'에 대한 검색결과
@@ -352,7 +374,12 @@ export default function SearchResult() {
           </div>
         </div>
       </div>
-      { paymentModal && <PaymentModal productId={productId} close={() => setPaymentModal(false)}/>}
+      {paymentModal && (
+        <PaymentModal
+          productId={productId}
+          close={() => setPaymentModal(false)}
+        />
+      )}
     </>
   );
 }
