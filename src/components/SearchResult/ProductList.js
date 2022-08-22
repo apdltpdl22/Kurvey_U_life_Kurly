@@ -31,8 +31,8 @@ function ProductList({products}) {
       ssr={true} // means to render carousel on server-side.
       infinite={true}
       >
-      {products.map((item) => 
-        <Item item={item}/>
+      {products.map((item, index) => 
+        <Item item={item} key={index}/>
       )}
     </Carousel>
   </div>

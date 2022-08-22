@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import logo from '../../assets/png/kurly_logo.png';
 import {useInput} from '../../hooks/useInput';
 import styles from './search-result.module.css';
@@ -6,7 +5,7 @@ import ProductList from './ProductList';
 import RecommendList from './RecommendList';
 // import axios from 'axios';
 
-export default function SearchResult(props) {
+export default function SearchResult() {
   // const [recommendations, setRecommendations] = useState([])
   // const [allProducts, setAllProducts] = useState([])
   // useEffect(() => {axios}, [searchKeyword])
@@ -238,11 +237,10 @@ export default function SearchResult(props) {
   ];
 
   // 장바구니 버튼 클릭 시 바로 구매
-
   return (
     <>
       <div id="seach_result_page" className={styles.board}>
-        <navigator className={styles.login_signup_btns}>
+        <div className={styles.login_signup_btns}>
           {/* 로그인 전 */}
           <ul id={styles.menu}>
             <li>
@@ -257,7 +255,7 @@ export default function SearchResult(props) {
           <li>봄비 님</li>
           <li>로그아웃</li>
         </ul> */}
-        </navigator>
+        </div>
         <div className={styles.header}>
           <div className={styles.logo_input_header}>
             <img className={styles.logo} src={logo} alt="마켓컬리 로고" />
@@ -270,11 +268,10 @@ export default function SearchResult(props) {
               id="gnb_search"
               placeholder="검색어를 입력해주세요"
               required=""
-              class="css-1b3w0ph e1493ofl3"
               value={searchInput}
               onChange={changeSearchInput}
             />
-            <button class="css-ywxmlw e1493ofl0"></button>
+            <button></button>
           </div>
 
           <div className={styles.button_box}>
@@ -335,21 +332,20 @@ export default function SearchResult(props) {
           </div>
         </div>
         <div id="category_btn"></div>
-        <div id="" className={styles.searchResult}>
+        <div className={styles.searchResult}>
           <h2 className={styles.searchKeyword}>
             '<span>{searchKeyword}</span>'에 대한 검색결과
           </h2>
           <div id="Recommend" className={styles.Recommend}>
             <h2>라이프스타일 맞춤 추천</h2>
-            {/* card carousel with hover */}
             <RecommendList products={recommendations} />
           </div>
 
           <div id="searchLists" className={styles.searchLists}>
-            {allProducts.map(list => (
+            {allProducts.map((list, index) => (
               <div className={styles.eachLists}>
                 <h2>{list.category}</h2>
-                <ProductList products={list.products} />
+                <ProductList key={index} products={list.products} />
               </div>
             ))}
           </div>
