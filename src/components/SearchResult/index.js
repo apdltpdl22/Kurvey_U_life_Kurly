@@ -17,6 +17,9 @@ export default function SearchResult(props) {
     },
   ];
 
+  // 장바구니 버튼 클릭 시 바로 구매
+  
+
   return (
     <div id="seach_result_page" className={styles.board}>
       <navigator className={styles.login_signup_btns}>
