@@ -8,19 +8,15 @@
   margin: 0;
 }
 
-.Recommend {
-  margin-bottom: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .searchResult {
   margin: 0px auto;
   width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.link{
+  margin-left: 1600px
 }
 
 .item_photos {

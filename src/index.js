@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import SearchResult from './components/SearchResult';
+import Category from './components/CategoryDetail/CategoryDetail'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
         <Route path='login' element={<Login />}/>
         <Route path='signup' element={<SignUp />}/>
         <Route path='search-result' element={<SearchResult />}/>
+        <Route path='search-result/:category' element={<Category />}/>
       </Routes>
     </BrowserRouter>
   </Provider>
