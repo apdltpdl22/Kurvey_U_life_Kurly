@@ -8,7 +8,7 @@ function RecommendItem({item}) {
       <div  className={style.overlay}></div>
       <div className={style.middle}>
         <div className={style.text}>{item.productName}</div>
-        <div className={style.text}>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
+        <div className={style.text}>{item.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</div>
       </div>
     </div>
   );
