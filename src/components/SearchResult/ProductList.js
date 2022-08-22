@@ -3,7 +3,7 @@ import Item from './ProductItem'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-function ProductList({products}) {
+function ProductList({products, openModal}) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -32,7 +32,7 @@ function ProductList({products}) {
       infinite={true}
       >
       {products.map((item, index) => 
-        <Item item={item} key={index}/>
+        <Item item={item} openModal={openModal} key={index}/>
       )}
     </Carousel>
   </div>
