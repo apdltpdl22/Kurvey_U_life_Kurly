@@ -1,6 +1,60 @@
-.Recommend {
-  margin-bottom: 90px;
+.board{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.Recommend {
+  margin-bottom:90px;
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.RecommendList{
+  text-align: center;
+
+}
+
+.ItemList{
+  display: grid;
+  grid-template-columns: 450px 450px 450px;
+  margin: 0 auto;
+}
+
+.ItemCard {
+  margin: 20px;
+}
+
+.img{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.small_grey_font {
+  font-size: 10px;
+  color:grey;
+  margin: 10px 0 0 0;
+}
+
+.black_product_name {
+  font-size: 17px;
+  margin: 0;
+}
+
+.black_price {
+  margin: 0;
+}
+
+.imageBox{
+  position: relative;
+}
+
+.imageBox button{
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
 }

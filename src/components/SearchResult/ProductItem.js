@@ -19,10 +19,9 @@ function ProductItem({item, openModal}) {
         </button>
       </div>
       <p className={style.small_grey_font}>
-        {item.earlyDelivery ? '샛별배송' : ''}
+        {item.deliveryType}
       </p>
       <p className={style.black_product_name}>
-        <span>{item.brand ? `[${item.brand}]` : ''}</span>
         {item.productName}
       </p>
       <h4 className={style.black_price}>
@@ -31,7 +30,7 @@ function ProductItem({item, openModal}) {
         </span>
         원
       </h4>
-      <p className={style.small_grey_font}>{item.detail}</p>
+      <p className={style.small_grey_font}>{item.description}</p>
     </div>
   );
 }
