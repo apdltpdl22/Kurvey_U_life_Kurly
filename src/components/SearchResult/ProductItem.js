@@ -3,7 +3,7 @@ import style from './product-item.module.css'
 
 function ProductItem({item}) {
   return (
-    <div>
+    <div id='ItemCard' className={style.ItemCard}>
       <img 
         className={style.img} src={`/products/${item.id}.jpg`}/>
       <p className={style.small_grey_font}>{item.earlyDelivery ? '샛별배송': ''}</p>

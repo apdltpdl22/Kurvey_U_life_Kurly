@@ -8,6 +8,13 @@
   margin: 0;
 }
 
+.Recommend {
+  margin-bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .searchResult {
   margin: 0px auto;
   width: 90%;
@@ -133,3 +140,19 @@
   width: 36px;
   height: 36px;
 }
+.searchKeyword {
+  text-align: center;
+  font-size: 30px;
+}
+.searchKeyword > span {
+  color: purple;
+}
+
+.eachLists {
+  margin-bottom: 90px;
+}
+
+h2 {
+  margin-left:20px;
+}
+
