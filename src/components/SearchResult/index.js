@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import logo from '../../assets/png/kurly_logo.png';
 import {useInput} from '../../hooks/useInput';
 import styles from './search-result.module.css';
 import ProductList from './ProductList';
 import { Link } from 'react-router-dom';
+import PaymentModal from '../PaymentModal';
 // import axios from 'axios';
 
 export default function SearchResult() {
@@ -10,6 +12,8 @@ export default function SearchResult() {
   // const [allProducts, setAllProducts] = useState([])
   // useEffect(() => {axios}, [searchKeyword])
   const [searchInput, changeSearchInput] = useInput('');
+  const [paymentModal, setPaymentModal] = useState(false);
+  const [productId, setProductId] = useState(null);
 
   // 하드코딩 ver
   const searchKeyword = '사과';
@@ -229,7 +233,10 @@ export default function SearchResult() {
     },
   ];
 
-
+  const openPaymentModal = (productId) => {
+    setProductId(productId);
+    setPaymentModal(true);
+  }
 
   // 장바구니 버튼 클릭 시 바로 구매
   return (
@@ -337,12 +344,13 @@ export default function SearchResult() {
               <div className={styles.eachLists}>
                 <h2>{list.category}</h2>
                 <Link to={`./${list.category}`} state={{ products: list.products }}><span className={styles.link}>{list.category}제품 더 보기</span></Link>
-                <ProductList key={index} products={list.products.slice(0, 10)} />
+                <ProductList key={index} products={list.products.slice(0, 10)} openModal={openPaymentModal} />
               </div>
             ))}
           </div>
         </div>
       </div>
+      { paymentModal && <PaymentModal productId={productId} close={() => setPaymentModal(false)}/>}
     </>
   );
 }

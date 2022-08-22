@@ -22,3 +22,13 @@
 .black_price {
   margin: 0;
 }
+
+.imageBox{
+  position: relative
+}
+
+.imageBox button{
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}

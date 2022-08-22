@@ -1,6 +1,6 @@
 import styles from './payment-modal.module.css';
 
-export default function PaymentModal({close}) {
+export default function PaymentModal({productId, close}) {
   return (
     <div id="myModal" className={styles.modal}>
       <div className={styles.modalWrap}>
