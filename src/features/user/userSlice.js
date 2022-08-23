@@ -4,12 +4,17 @@ import { getUserDetails, registerUser, userLogin } from './userAction'
 // initialize userToken from local storage
 const userToken = localStorage.getItem('userToken')
   ? localStorage.getItem('userToken')
-  : null
+  : null;
+  
+const userName = localStorage.getItem('userId')
+? localStorage.getItem('userId')
+: null;
 
 const initialState = {
   loading: false,
   userInfo: null,
   userToken,
+  userName,
   error: null,
   success: false,
 }
@@ -19,10 +24,12 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      localStorage.removeItem('userId') // delete token from storage
       localStorage.removeItem('userToken') // delete token from storage
       state.loading = false
       state.userInfo = null
       state.userToken = null
+      state.userName = null;
       state.error = null
     },
   },
@@ -68,6 +75,6 @@ const userSlice = createSlice({
   },
 })
 
-export const { logout } = userSlice.actions
-
+export const { logout } = userSlice.actions;
+export const userSelector = state => state.user;
 export default userSlice.reducer
