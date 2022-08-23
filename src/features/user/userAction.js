@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import jwt_decode from "jwt-decode";
 
 export const userLogin = createAsyncThunk(
   '/api/v1/signin',
@@ -21,11 +22,13 @@ export const userLogin = createAsyncThunk(
       // localStorage.setItem('userToken', res.data.userToken)
       const words = res.headers.authorization.split(' ')
       let userToken = words[1]
-      console.log(userToken)
-      localStorage.setItem('userToken', userToken)
-      
-      return res.data
 
+      const decode = jwt_decode(userToken);
+
+      localStorage.setItem('userToken', userToken)
+      localStorage.setItem('userId', decode.sub);
+      
+      return {...res.data, decode};
     } catch (error) {
       // return custom error message from API if any
       if (error.response && error.response.data.message) {
