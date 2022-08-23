@@ -59,8 +59,9 @@ function CategoryDetail(props) {
 
 
   return (
+    <>
+    <Header/>
     <div className={styles.board}>
-      <Header/>
       <div id="Recommend" className={styles.Recommend}>
         <h2>라이프스타일 맞춤 추천</h2>
         <div className={styles.RecommendList}>
@@ -104,6 +105,7 @@ function CategoryDetail(props) {
       { paymentModal && <PaymentModal productId={productId} close={() => setPaymentModal(false)}/>}
       </div>
     </div>
+    </>
   );
 }
 

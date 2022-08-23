@@ -5,8 +5,6 @@ import logo from '../../assets/png/kurly_logo.png';
 
 function Header(props) {
   const [searchInput, changeSearchInput] = useInput('');
-  const searchKeyword = '사과';
-
   return (
     <div>
       <div className={styles.login_signup_btns}>
@@ -100,10 +98,29 @@ function Header(props) {
             </button>
           </div>
         </div>
-        <div id="category_btn"></div>
-        <h2 className={styles.searchKeyword}>
-            '<span>{searchKeyword}</span>'에 대한 검색결과
-          </h2>
+        <div className={styles.category}>
+          <div className={styles.menuBox}>
+            <span></span>
+            <span>카테고리</span>
+          </div>
+          <ul className={styles.menuList}>
+            <li>
+              <span>신상품</span>
+            </li>
+            <li>
+              <span>베스트</span>
+            </li>
+            <li>
+              <span>알뜰쇼핑</span>
+            </li>
+            <li>
+              <span>특가/혜택</span>
+            </li>
+          </ul>
+          <div className={styles.infoBox}>
+            <span>샛별・낮</span> 배송안내
+          </div>
+        </div>
     </div>
   );
 }
