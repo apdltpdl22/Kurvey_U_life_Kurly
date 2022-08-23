@@ -58,3 +58,11 @@
   bottom: 16px;
   right: 16px;
 }
+
+.searchKeyword {
+  text-align: center;
+  font-size: 30px;
+}
+.searchKeyword > span {
+  color: purple;
+}

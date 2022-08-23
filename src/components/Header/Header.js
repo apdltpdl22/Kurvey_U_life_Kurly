@@ -10,10 +10,10 @@ function Header(props) {
       <div className={styles.login_signup_btns}>
           {/* 로그인 전 */}
           <ul id={styles.menu}>
-            <li>
+            <li id={styles.signup}>
               <a href="/signup">회원가입</a>
             </li>
-            <li>
+            <li id={styles.login}>
               <a href="/login">로그인</a>
             </li>
           </ul>

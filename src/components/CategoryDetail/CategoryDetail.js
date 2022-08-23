@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import RecommendList from './RecommendList';
 import {useParams, useLocation} from 'react-router-dom'
-import {useInput} from '../../hooks/useInput';
 import styles from './category-detail.module.css'
 import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header'
@@ -44,14 +43,18 @@ function CategoryDetail(props) {
       cost: 12600,
     },
   ];
-  const [searchInput, changeSearchInput] = useInput('');
   const [paymentModal, setPaymentModal] = useState(false);
   const [productId, setProductId] = useState(null);
-
+  const [products, setProducts] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState(null);
   const {category} = useParams();
   const location = useLocation();
-  const products = location.state.products
-  console.log(products)
+
+  useEffect(() => {
+    setProducts(location.state.products);
+    setSearchKeyword(location.state.searchKeyword);
+  }, [])
+
   const openPaymentModal = (productId) => {
     setProductId(productId);
     setPaymentModal(true);
@@ -62,6 +65,9 @@ function CategoryDetail(props) {
     <>
     <Header/>
     <div className={styles.board}>
+      <h2 className={styles.searchKeyword}>
+        '<span>{searchKeyword}</span>'에 대한 검색결과
+      </h2>      
       <div id="Recommend" className={styles.Recommend}>
         <h2>라이프스타일 맞춤 추천</h2>
         <div className={styles.RecommendList}>

@@ -249,12 +249,21 @@ export default function SearchResult() {
 
           <div id="searchLists" className={styles.searchLists}>
             {allProducts.map((list, index) => (
-              <div className={styles.eachLists} key={index}>
+              <div className={styles.eachLists} 
+              key={index}>
                 <div className={styles.text_group}>
                 <h2>{list.category}</h2>
-                <Link to={`./${list.category}`} state={{ products: list.products }}><span className={styles.link}>{list.category}제품 더 보기</span></Link>
+                <Link to={`./${list.category}`} 
+                      state={{ 
+                        products: list.products, 
+                        searchKeyword:searchKeyword 
+                      }}  
+                      className={styles.link}>
+                  <span>{list.category}제품 더 보기</span></Link>
                 </div>
-                <ProductList key={index} products={list.products.slice(0, 10)} openModal={openPaymentModal} />
+                <ProductList key={index} 
+                products={list.products.slice(0, 10)} 
+                openModal={openPaymentModal} />
               </div>
             ))}
           </div>

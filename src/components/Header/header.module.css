@@ -1,19 +1,24 @@
 .logo {
-  width: 82px;
+  width: 90px;
 }
+
 
 .login_signup_btns #menu {
   float: right;
   list-style-type: none;
   padding: 20px;
-  margin: 0;
+  margin: 0 50px;
 }
 
 .login_signup_btns #menu li {
   float: left;
-  margin-left: 50px;
   line-height: 60px;
 }
+
+.login_signup_btns #login {
+  margin-left: 30px;
+}
+
 
 .login_signup_btns #menu li a {
   color: #545454;
