@@ -2,9 +2,19 @@ import React from 'react';
 import {useInput} from '../../hooks/useInput';
 import styles from './header.module.css'
 import logo from '../../assets/png/kurly_logo.png';
+import {useDispatch} from 'react-redux';
+import {changeSearchKeyword, getSearchResultAsync} from '../../features/search/searchSlice';
 
 function Header(props) {
   const [searchInput, changeSearchInput] = useInput('');
+  const dispatch = useDispatch();
+
+  function onSubmit(e){
+    e.preventDefault();
+    dispatch(changeSearchKeyword(searchInput)); 
+    dispatch(getSearchResultAsync(searchInput));
+  }
+
   return (
     <div>
       <div className={styles.login_signup_btns}>
@@ -30,7 +40,9 @@ function Header(props) {
             <button>뷰티컬리</button>
           </div>
 
-          <div className={styles.search_bar}>
+          <form 
+            onSubmit={onSubmit}
+            className={styles.search_bar}>
             <input
               id="gnb_search"
               placeholder="검색어를 입력해주세요"
@@ -38,8 +50,8 @@ function Header(props) {
               value={searchInput}
               onChange={changeSearchInput}
             />
-            <button></button>
-          </div>
+            <button>검색</button>
+          </form>
 
           <div className={styles.button_box}>
             <button>
