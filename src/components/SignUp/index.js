@@ -10,7 +10,7 @@ export default function SignUp(props) {
   const [inputPwChk, changePwChk] = useInput('');
   const [inputName, changeName] = useInput('');
   const [inputBirthDate, changeBirth] = useInput('');
-  const [inputGender, changeGender] = useInput('');
+  const [inputGender, changeGender] = useInput('female');
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function SignUp(props) {
   const birth_date = useRef();
 
   const onClickSignUp = e => {
-    console.log(inputBirthDate);
+    console.log(inputGender)
 
     if (inputId === '') {
       id.current.focus();
@@ -55,6 +55,7 @@ export default function SignUp(props) {
       setErrorMsg('비밀번호가 다릅니다.');
       return;
     }
+    setError(false);
 
     const credentials = {
       inputId,
@@ -64,7 +65,6 @@ export default function SignUp(props) {
       inputBirthDate,
       inputGender,
     };
-    setError(false);
 
     console.log(credentials);
     
