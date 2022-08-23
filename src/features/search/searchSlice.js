@@ -1,5 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { configureStore } from '@reduxjs/toolkit';
 const axios = require('axios');
 
 const initialState = {
