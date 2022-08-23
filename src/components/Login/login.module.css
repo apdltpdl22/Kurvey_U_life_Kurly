@@ -1,25 +1,14 @@
 .wrap{
-  width: 100%;
+  padding: 100px;
+  background-color: #5f0080;
+  overflow: hidden;
   height: 100vh;
-  background-color: #5F0080;
 }
 
 .wrap h2 {
   margin: 0 auto;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
   color: #dedede;
-}
-
-.wrap a{
-  margin: 0 auto;
-  position: absolute;
-  bottom: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  color: #dedede;
+  text-align: center;
 }
 
 .login {
@@ -27,12 +16,8 @@
   background-color: white;
   padding: 40px 30px 30px 30px;
   border-radius: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: 400px;
-
-  transform: translate(-50%, -50%); 
+  margin: 50px auto;
   transition: transform 300ms, box-shadow 300ms;
   box-shadow: 5px 10px 10px rgba((2, 128, 144, 1), 0.2);
 }
@@ -78,4 +63,15 @@
 
 .login > button:hover {
   background-color: darken(#5F0080, 5%);
+}
+
+.aBox{
+  width: 100%;
+  margin-top:20px;
+  text-align: center;
+}
+
+.wrap .aBox a{
+  margin: 0 auto;
+  color: #dedede;
 }

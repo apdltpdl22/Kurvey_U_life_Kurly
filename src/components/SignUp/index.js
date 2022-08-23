@@ -109,7 +109,9 @@ export default function SignUp(props) {
           회원가입
         </button>
       </form>
-      <a href="/login">Login Here</a>
+      <div className={styles.aBox}>
+        <a href="/login">Login Here</a>
+      </div>
     </div>
   );
 }
