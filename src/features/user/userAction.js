@@ -12,16 +12,20 @@ export const userLogin = createAsyncThunk(
         },
       }
 
-      const { data } = await axios.post(
+      const res = await axios.post(
         '/api/v1/signin',
         { userId, password },
         config
       )
-
       // store user's token in local storage
-      localStorage.setItem('userToken', data.userToken)
+      // localStorage.setItem('userToken', res.data.userToken)
+      const words = res.headers.authorization.split(' ')
+      let userToken = words[1]
+      console.log(userToken)
+      localStorage.setItem('userToken', userToken)
+      
+      return res.data
 
-      return data
     } catch (error) {
       // return custom error message from API if any
       if (error.response && error.response.data.message) {
