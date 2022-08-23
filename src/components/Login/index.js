@@ -50,10 +50,12 @@ export default function Login(props) {
           required
         />
         <button type="submit">
-          Login
+          로그인
         </button>
       </form>
-      <a href="/signup">Register Here</a>
+      <div className={styles.aBox}>
+        <a href="/signup">Register Here</a>
+      </div>
     </div>
   );
 }
