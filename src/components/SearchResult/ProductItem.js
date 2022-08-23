@@ -3,9 +3,9 @@ import style from './product-item.module.css';
 import defaultImg from '../../assets/jpg/default-image.jpg'
 
 function ProductItem({item, openModal}) {
+
   const onErrorImg = e => {
-    console.log('에러', e.target)
-    // e.target.src = defaultImg;
+    e.target.src = defaultImg;
   };
 
   return (
@@ -13,7 +13,7 @@ function ProductItem({item, openModal}) {
       <div className={style.imageBox}>
         <img
           className={style.img}
-          src={item.imageUrl}
+          src={item.imageUrl? item.imageUrl : defaultImg}
           alt="제품 이미지"
           onError={onErrorImg}
         />
