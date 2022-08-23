@@ -4,6 +4,8 @@ import {useParams, useLocation} from 'react-router-dom';
 import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header';
+import defaultImg from '../../assets/jpg/default-image.jpg'
+
 
 function CategoryDetail(props) {
   const recommendations = [
@@ -59,7 +61,10 @@ function CategoryDetail(props) {
     setProductId(productId);
     setPaymentModal(true);
   };
-
+  
+  const onErrorImg = e => {
+    e.target.src = defaultImg;
+  };
   return (
     <>
       <Header />
@@ -81,8 +86,9 @@ function CategoryDetail(props) {
                 <div className={styles.imageBox}>
                   <img
                     className={styles.img}
-                    src={`/products/${item.id}.jpg`}
+                    src={item.imageUrl? item.imageUrl : defaultImg}
                     alt="제품 이미지"
+                    onError={onErrorImg}
                   />
                   <button
                     type="button"
