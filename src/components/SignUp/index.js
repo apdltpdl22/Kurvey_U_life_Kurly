@@ -1,153 +1,114 @@
-import React, {useState, useRef} from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './signup.module.css';
-import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
-import {useInput} from '../../hooks/useInput';
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux';
+import Error from '../Axios/Error'
+import { registerUser } from '../../features/user/userAction'
 
 export default function SignUp(props) {
-  const [inputId, changeId] = useInput('');
-  const [inputPw, changePw] = useInput('');
-  const [inputPwChk, changePwChk] = useInput('');
-  const [inputName, changeName] = useInput('');
-  const [inputBirthDate, changeBirth] = useInput('');
-  const [inputGender, changeGender] = useInput('female');
+  const [customError, setCustomError] = useState(null);
+  const { loading, userInfo, error, success } = useSelector(
+    (state) => state.user
+  )
+  const dispatch = useDispatch()
 
+  const { register, handleSubmit } = useForm()
   const navigate = useNavigate();
 
-  // 에러 발생시 에러 메시지 출력
-  const [error, setError] = useState(true);
-  const [errorMsg, setErrorMsg] = useState('');
+  useEffect(() => {
+    // redirect user to login page if registration was successful
+    if (success) navigate('/login')
+  }, [navigate, userInfo, success])
 
-  // 회원가입 버튼 클릭 이벤트
-  // 유효성 검사
-  const id = useRef();
-  const pw = useRef();
-  const pw_chk = useRef();
-  const username = useRef();
-  const birth_date = useRef();
-
-  const onClickSignUp = e => {
-    console.log(inputGender)
-
-    if (inputId === '') {
-      id.current.focus();
-      setErrorMsg('아이디를 적어주세요.');
-      return;
+  const submitForm = (data) => {
+    if (data.password !== data.confirmPassword) {
+      setCustomError('Password mismatch')
+      return
     }
-    if (inputPw === '') {
-      pw.current.focus();
-      setErrorMsg('비밀번호를 적어주세요.');
-      return;
-    }
-    if (inputPwChk === '') {
-      pw_chk.current.focus();
-      setErrorMsg('비밀번호 확인란을 적어주세요.');
-      return;
-    }
-
-    if (inputBirthDate === '' || inputGender === '' || inputName === '') {
-      setErrorMsg('모든 칸의 정보를 입력해주세요.');
-      return;
-    }
-
-    if (inputPwChk !== inputPw) {
-      pw_chk.current.focus();
-      setErrorMsg('비밀번호가 다릅니다.');
-      return;
-    }
-    setError(false);
-
-    const credentials = {
-      inputId,
-      inputPw,
-      inputPwChk,
-      inputName,
-      inputBirthDate,
-      inputGender,
-    };
-
-    console.log(credentials);
-    
-    axios
-      .post('url', credentials)
-      .then(res => {
-        console.log(res.data);
-        navigate('/login');
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+    console.log(data)
+    // transform email string to lowercase to avoid case sensitivity issues during login
+    dispatch(registerUser(data));
+  }
 
   return (
     <div className={styles.wrap}>
       <h2 className={styles.title}>회원가입</h2>
-      <div className={styles.register}>
-        <input
-          ref={id}
-          id="input_id"
-          type="text"
-          name="input_id"
-          placeholder="아이디를 입력해주세요"
-          value={inputId}
-          onChange={changeId}
-        />
-        <input
-          ref={pw}
-          id="input_pw"
-          type="password"
-          name="input_pw"
-          placeholder="비밀번호를 입력해주세요"
-          value={inputPw}
-          onChange={changePw}
-        />
-        <input
-          ref={pw_chk}
-          id="input_pw_chk"
-          type="password"
-          name="input_pw_chk"
-          placeholder="비밀번호를 확인해주세요"
-          value={inputPwChk}
-          onChange={changePwChk}
-        />
-        <input
-          ref={username}
-          id="input_name"
-          type="text"
-          name="input_name"
-          placeholder="이름을 입력해주세요"
-          value={inputName}
-          onChange={changeName}
-        />
+      <form 
+      onSubmit={handleSubmit(submitForm)} 
+      className={styles.register}
+      >
+        {error && <Error>{error}</Error>}
+        {customError && <Error>{customError}</Error>}
         <div className={styles.inputBox}>
-          <label htmlFor="input_birthDate">생년월일</label>
+            <label htmlFor="userId">아이디</label>
+            <input
+              id="userId"
+              type="text"
+              name="userId"
+              placeholder='아이디'
+              {...register('userId')}
+              required
+            />
+        </div>
+        <div className={styles.inputBox}>
+            <label htmlFor="password">비밀번호</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder='비밀번호'
+              {...register('password')}
+              required
+            />
+        </div>
+        <div className={styles.inputBox}>
+            <label htmlFor="confirmPassword">비밀번호 확인</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              name="confirmPassword"
+              placeholder='비밀번호 확인'
+              {...register('confirmPassword')}
+              required
+            />
+        </div>
+        <div className={styles.inputBox}>
+            <label htmlFor="name">이름</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder='이름'
+              {...register('name')}
+              required
+            />
+        </div>
+        <div className={styles.inputBox}>
+          <label htmlFor="birthDay">생년월일</label>
           <input
-            ref={birth_date}
-            id="input_birthDate"
+            id="birthDay"
             type="date"
-            name="input_birthDate"
-            value={inputBirthDate}
-            onChange={changeBirth}
+            name="birthDay"
+            {...register('birthDay')}
+            required
           />
         </div>
 
         <div className={styles.inputBox}>
-          <label>성별</label>
+          <label htmlFor="gender">성별</label>
           <div className={styles.select}>
-            <select value={inputGender} onChange={changeGender}>
-              <option value="female">여성</option>
-              <option value="male">남성</option>
+            <select {...register('gender')} defaultValue={'F'}>
+              <option value="F">여성</option>
+              <option value="M">남성</option>
             </select>
           </div>
         </div>
 
-        <button type="button" onClick={onClickSignUp}>
+        <button type="submit" className='button'>
           회원가입
         </button>
-
-        <p>{error ? errorMsg : null}</p>
-      </div>
-
+      </form>
       <a href="/login">Login Here</a>
     </div>
   );

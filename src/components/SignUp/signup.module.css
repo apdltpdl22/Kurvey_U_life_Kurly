@@ -68,7 +68,7 @@
   background-color: darken(#5f0080, 5%);
 }
 
-.inputBox > input {
+/* .inputBox > input {
   font-family: 'Asap', sans-serif;
   display: block;
   border-radius: 5px;
@@ -78,9 +78,9 @@
   border: 0;
   padding: 10px 10px;
   margin: 15px -10px;
-}
+} */
 
-input[type='date'] {
+.inputBox > input, .inputBox > select {
   padding: 12px;
   font-size: 14px;
   border: 1px solid #dedede;
