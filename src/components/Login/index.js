@@ -19,7 +19,7 @@ export default function Login(props) {
       console.log('로그인 성공')
       navigate('/')
     }
-  }, [navigate, userInfo])
+  }, [navigate, userInfo]);
 
   const submitForm = (data) => {
     dispatch(userLogin(data))
