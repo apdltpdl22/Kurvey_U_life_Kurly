@@ -175,3 +175,12 @@ input[id='plant']:checked + label::after {
   left: 0;
   top: 0;
 }
+
+.closeButton{
+  width: 100%;
+  text-align: right;
+}
+
+.closeButton button{
+  font-size: 1.4rem;
+}
