@@ -1,14 +1,21 @@
 import React from 'react';
 import style from './product-item.module.css';
+import defaultImg from '../../assets/jpg/default-image.jpg'
 
 function ProductItem({item, openModal}) {
+  const onErrorImg = e => {
+    console.log('에러', e.target)
+    // e.target.src = defaultImg;
+  };
+
   return (
     <div id="ItemCard" className={style.ItemCard}>
       <div className={style.imageBox}>
         <img
           className={style.img}
-          src={`/products/${item.id}.jpg`}
+          src={item.imageUrl}
           alt="제품 이미지"
+          onError={onErrorImg}
         />
 
         <button type="button" onClick={()=>openModal(item.id)}>

@@ -21,10 +21,6 @@ export default function SearchResult() {
     setSearchResults(stateResults)
   },[stateKeyword,stateResults])
 
-  // const searchKeyword = useSelector(searchKeywordSelector)
-  // const searchResults = useSelector(searchResultsSelector)
-
-
   // 하드코딩 ver
   const openPaymentModal = productId => {
     setProductId(productId);
@@ -53,7 +49,8 @@ export default function SearchResult() {
                         searchKeyword:searchKeyword 
                       }}  
                       className={styles.link}>
-                  <span>{list.category}제품 더 보기</span></Link>
+                  <span>{list.category}제품 더 보기</span>
+                </Link>
                 </div>
                 <ProductList key={index} 
                 products={list.products.slice(0, 10)} 
