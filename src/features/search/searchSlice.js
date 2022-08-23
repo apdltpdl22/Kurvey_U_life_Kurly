@@ -12,11 +12,12 @@ export const searchSlice = createSlice({
   initialState,
   reducers : {
     changeSearchKeyword : (state, action) => {
+      console.log('action:', action)
       state.searchKeyword = action.payload
     },
 
     getSearchResults : (state, action) => {
-      console.log(action)
+      console.log('action:', action)
       state.searchResults = action.payload
     }
   }
