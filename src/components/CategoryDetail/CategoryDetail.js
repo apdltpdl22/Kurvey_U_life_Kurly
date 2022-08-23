@@ -6,6 +6,7 @@ import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header';
 import defaultImg from '../../assets/jpg/default-image.jpg'
+// import axios from 'axios';
 
 
 function CategoryDetail(props) {
@@ -51,13 +52,25 @@ function CategoryDetail(props) {
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
+  // const [recommendations, setRecommendations] = useState([]);
   // const {categoryId} = useParams();
   const location = useLocation();
+
+  // const getRecommendations = () => {
+  //   axios.get(`/api/v1/recommend/${categoryId}`)
+  //   .then(res => {
+  //     setRecommendations(res.data)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // }
 
   useEffect(() => {
     setProducts(location.state.products);
     setSearchKeyword(location.state.searchKeyword);
     setCategoryName(location.state.categoryName);
+    // getRecommendations();
   }, [location]);
 
   const openPaymentModal = productId => {
