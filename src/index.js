@@ -6,8 +6,6 @@ import { Provider } from 'react-redux'
 import {store} from './app/store'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { useForm } from 'react-hook-form'
-
 
 // pages
 import Login from './components/Login';

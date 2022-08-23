@@ -8,7 +8,7 @@ import styles from './login.module.css'
 
 
 export default function Login(props) {
-  const { loading, userInfo, error } = useSelector((state) => state.user)
+  const { userInfo, error } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   
   const { register, handleSubmit } = useForm()
