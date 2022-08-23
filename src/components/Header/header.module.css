@@ -13,6 +13,14 @@
 .login_signup_btns #menu li {
   float: left;
   line-height: 60px;
+  color: #545454;
+  font-size: 13px;
+  text-decoration: none;
+  margin-right: 12px;
+}
+
+.login_signup_btns #menu #logout{
+  cursor: pointer;
 }
 
 .login_signup_btns #login {
