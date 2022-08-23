@@ -17,37 +17,36 @@ jobs:
       with:
         node-version: "14"
 
-    tasks: 
-      - name: npm install
-        run: |
-          npm install
-
-      - name: npm build
-        env:
-          API_URL: ${{ secrets.API_URL }}
-        run: |
-          npm run build
-
-      - name: Deploy to AWS S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: >
-          aws s3 cp 
-            --recursive 
-            --region ap-northeast-2 
-            build s3://u-life-kurly-frontend
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-2
-
-      # Cloud Front 무효화 설정
-      - name: Invalidate 
+    - name: npm install
       run: |
-          aws cloudfront create-invalidation --distribution-id E29ZLV8ZCQND7S --paths '/*'
+        npm install
+
+    - name: npm build
+      env:
+        API_URL: ${{ secrets.API_URL }}
+      run: |
+        npm run build
+
+    - name: Deploy to AWS S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: >
+        aws s3 cp 
+          --recursive 
+          --region ap-northeast-2 
+          build s3://u-life-kurly-frontend
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+
+    # Cloud Front 무효화 설정
+    - name: Invalidate 
+    run: |
+        aws cloudfront create-invalidation --distribution-id E29ZLV8ZCQND7S --paths '/*'
       
 
