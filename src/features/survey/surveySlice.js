@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 const axios = require('axios');
-const API_URL = 'http://15.164.99.224:8080/api/v1';
 
 const initialState = {
   data: [],
@@ -18,33 +17,24 @@ export const surveySlice = createSlice({
 
 export const getSurveyAsync = data => async dispatch => {
   try {
-    const response = await axios.get(API_URL + '/lifestyle', data);
+    const response = await axios.get('api/v1/lifestyle', data);
     dispatch(getSurvey(response.data.data));
   } catch (err) {
     throw new Error(err);
   }
 };
 
-export const saveSurveyAsync = data => async dispatch => {
+export const saveSurveyAsync = ({req, userId, close}) => async dispatch => {
   try {
-    // const userId = localStorage.getItem('userId');
-    // const userToken = localStorage.getItem('userToken');
-
-    // const headers = {
-    //   'Content-Type': 'application/json; charset=UTF-8', 
-    //   accept: 'application/json',
-    //   Authorization: `Bearer ${userToken}`,
-    //   'Accept-Version': 'production',
-    // };
-
-    // const response = await axios.post( + `${API_URL}/lifestyle/${userId}`, data, headers);
-    // console.log(response);
+    const response = axios.post(`api/v1/lifestyle/${userId}`, {...req, numberOfFamily: Number(req.numberOfFamily)});
+    console.log(response);
 
     // confirm toast
-    alert('설문조사가 저장되었습니다')
+    alert('설문조사가 저장되었습니다');
+    return true;
   } catch (err) {
-    alert('설문조사가 저장되지 않았습니다')
-    throw new Error(err);
+    alert('설문조사가 저장되지 않았습니다');
+    return false;
   }
 };
 

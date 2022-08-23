@@ -1,34 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import styles from './signup.module.css';
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import styles from './signup.module.css';
+
 import Error from '../Axios/Error'
-import { registerUser } from '../../features/user/userAction'
+import { registerUser } from '../../features/user/userAction';
+import { getSurveyAsync } from '../../features/survey/surveySlice';
+
+import SurveyModal from '../SurveyModal';
 
 export default function SignUp(props) {
   const [customError, setCustomError] = useState(null);
-  const { loading, userInfo, error, success } = useSelector(
+  const [surveyModal, setSurveyModal] = useState(false);
+  const [userId, setUserId] = useState('');
+
+  const { userInfo, error, success } = useSelector(
     (state) => state.user
   )
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm()
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getSurveyAsync());
+  }, [dispatch]);
 
   useEffect(() => {
     // redirect user to login page if registration was successful
-    if (success) navigate('/login')
-  }, [navigate, userInfo, success])
+    if (success) {
+      setSurveyModal(true);
+    }
+  }, [ userInfo, success])
 
-  const submitForm = (data) => {
+  const submitForm = async (data) => {
     if (data.password !== data.confirmPassword) {
       setCustomError('Password mismatch')
       return
     }
-    console.log(data)
-    // transform email string to lowercase to avoid case sensitivity issues during login
-    dispatch(registerUser(data));
+
+    const response = await dispatch(registerUser(data));
+    const id = response.payload.data.data.id;
+    setUserId(id);
   }
 
   return (
@@ -112,6 +126,7 @@ export default function SignUp(props) {
       <div className={styles.aBox}>
         <a href="/login">Login Here</a>
       </div>
+      {surveyModal && <SurveyModal close={() => setSurveyModal(false)} userId={userId}/>}
     </div>
   );
 }
