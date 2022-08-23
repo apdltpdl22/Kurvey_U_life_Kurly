@@ -1,61 +1,55 @@
-import styles from './login.module.css';
-import {useSelector, useDispatch} from 'react-redux';
-import {loginAccount, selectUser} from '../../features/user';
-import axios from 'axios';
-import {useInput} from '../../hooks/useInput';
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { userLogin } from '../../features/user/userAction'
+import { useEffect } from 'react'
+import Error from '../Axios/Error'
+import styles from './login.module.css'
+
 
 export default function Login(props) {
-  const [inputId, changeId] = useInput('');
-  const [inputPw, changePw] = useInput('');
-  const dispatch = useDispatch();
-  const selector = useSelector(selectUser);
+  const { loading, userInfo, error } = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+  
+  const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
 
-  // 로그인 버튼 클릭 이벤트
-  const onSubmit = e => {
-    e.preventDefault();
-    if (inputId === '' || inputPw === '') {
-      window.alert('아이디와 비밀번호를 입력해주세요.');
-      return;
+  useEffect(() => {
+    if (userInfo) {
+      console.log('로그인 성공')
+      navigate('/')
     }
+  }, [navigate, userInfo])
 
-    const credentials = {
-      id: inputId,
-      pw: inputPw,
-    };
-
-    axios
-      .post('url', credentials)
-      .then(res => {
-        console.log(res.data);
-        // const userInfo = {
-        //   isLogged: true,
-        //   userName: 'name',
-        //   userId: 'inputId',
-        //   jwtToken : 'token'
-        // }
-        // dispatch(loginAccount(userInfo))
-        // navigate('/login')
-      })
-      .catch(err => {
-        console.log(err);
-        const userInfo = {
-          isLogged: true,
-          userName: 'name',
-          userId: inputId,
-          jwtToken: 'token',
-        };
-        dispatch(loginAccount(userInfo));
-        console.log('user', selector);
-      });
-  };
+  const submitForm = (data) => {
+    dispatch(userLogin(data))
+  }
 
   return (
     <div className={styles.wrap}>
       <h2 className={styles.title}>로그인</h2>
-      <form className={styles.login}>
-        <input type="text" placeholder="Username" value={inputId}  onChange={changeId}/>
-        <input type="password" placeholder="Password" value={inputPw} onChange={changePw}/>
-        <button type="submit" onSubmit={onSubmit}>
+      <form 
+        onSubmit={handleSubmit(submitForm)} 
+        className={styles.login}
+      >
+        {error && <Error>{error}</Error>}
+        <label htmlFor='userId'>아이디</label>
+        <input
+          id='userId' name='userId'
+          type="text"
+          placeholder="아이디"
+          {...register('userId')}
+          required
+        />
+        <label htmlFor='password'>비밀번호</label>
+        <input
+          id='password' name='password'
+          type="password"
+          placeholder="비밀번호"
+          {...register('password')}
+          required
+        />
+        <button type="submit">
           Login
         </button>
       </form>
