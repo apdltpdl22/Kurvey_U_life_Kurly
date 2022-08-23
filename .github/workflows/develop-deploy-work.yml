@@ -17,11 +17,11 @@ jobs:
       with:
         node-version: "14"
 
-    - name: npm install #
+    - name: npm install # npm install 
       run: |
         npm install
 
-    - name: Sentry Auth Token Setting && next build #
+    - name: npm build # npm build
       env:
         API_URL: ${{ secrets.API_URL }}
       run: |
