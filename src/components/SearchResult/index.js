@@ -1,6 +1,4 @@
 import {useState} from 'react';
-import logo from '../../assets/png/kurly_logo.png';
-import {useInput} from '../../hooks/useInput';
 import styles from './search-result.module.css';
 import ProductList from './ProductList';
 import {Link} from 'react-router-dom';
@@ -13,7 +11,6 @@ export default function SearchResult() {
   // const [recommendations, setRecommendations] = useState([])
   // const [allProducts, setAllProducts] = useState([])
   // useEffect(() => {axios}, [searchKeyword])
-  const [searchInput, changeSearchInput] = useInput('');
   const [paymentModal, setPaymentModal] = useState(false);
   const [productId, setProductId] = useState(null);
 
@@ -252,23 +249,12 @@ export default function SearchResult() {
 
           <div id="searchLists" className={styles.searchLists}>
             {allProducts.map((list, index) => (
-              <div className={styles.eachLists}>
-                <div className={styles.categoryHeader}>
-                  <h2>{list.category}</h2>
-                  <Link
-                    to={`./${list.category}`}
-                    state={{products: list.products}}
-                  >
-                    <span className={styles.link}>
-                      {list.category}제품 더 보기
-                    </span>
-                  </Link>
+              <div className={styles.eachLists} key={index}>
+                <div className={styles.text_group}>
+                <h2>{list.category}</h2>
+                <Link to={`./${list.category}`} state={{ products: list.products }}><span className={styles.link}>{list.category}제품 더 보기</span></Link>
                 </div>
-                <ProductList
-                  key={index}
-                  products={list.products.slice(0, 10)}
-                  openModal={openPaymentModal}
-                />
+                <ProductList key={index} products={list.products.slice(0, 10)} openModal={openPaymentModal} />
               </div>
             ))}
           </div>
