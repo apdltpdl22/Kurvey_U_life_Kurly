@@ -21,11 +21,10 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<App />}/>
         <Route path='login' element={<Login />}/>
         <Route path='signup' element={<SignUp />}/>
-        <Route path='search-result' element={<SearchResult />}/>
-        <Route path='search-result/:category' element={<Category />}/>
+        <Route path='/' element={<SearchResult />}/>
+        <Route path='/:categoryId' element={<Category />}/>
       </Routes>
     </BrowserRouter>
   </Provider>
