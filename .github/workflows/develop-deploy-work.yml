@@ -1,43 +1,41 @@
-name: Develop Deploy WorkFlow
+name: Develop Development WorkFlow
 
 on: # 이벤트 트리거
-  push: # push 이벤트 트리거
-    branches: # branches 설정
-      - develop
-  pull_request: # push 이벤트 트리거
-    branches: # branches 설정
-      - develop
+  push: # push event 트리거
+    branches:
+      - develop #develop 브랜치에서 push 이벤트가 일어났을 때 실행
 
 jobs:
-  build:
+  build: 
     runs-on: ubuntu-18.04
 
-  steps:
+    steps:
     - uses: actions/checkout@v2
-    
+
     # Node 환경을 설정하여 npm 커맨드를 사용할 수 있도록 하는 Action을 불러옵니다.
     - uses: actions/setup-node@v2
       with:
         node-version: "14"
 
-    - name: npm install
+    - name: npm install #
       run: |
         npm install
-    
-    - name: npm run build
+
+    - name: Sentry Auth Token Setting && next build #
+      env:
+        API_URL: ${{ secrets.API_URL }}
       run: |
         npm run build
 
     - name: Deploy to AWS S3
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.API_URL }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         aws s3 cp \
           --recursive \
           --region ap-northeast-2 \
           build s3://u-life-kurly-frontend
-
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
