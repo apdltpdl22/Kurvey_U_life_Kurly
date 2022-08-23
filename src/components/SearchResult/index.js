@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import {useSelector} from 'react-redux';
+import {searchResultsSelector} from '../../features/search/searchSlice'
 import styles from './search-result.module.css';
 import ProductList from './ProductList';
 import { Link } from 'react-router-dom';
@@ -11,18 +13,11 @@ export default function SearchResult() {
   const [allProducts, setAllProducts] = useState([])
   const [paymentModal, setPaymentModal] = useState(false);
   const [productId, setProductId] = useState(null);
+  const searchResults = useSelector(searchResultsSelector)
 
-  // useEffect(() => {
-  //   axios.get(`/api/v1/product/${searchKeyword}`,
-  //   )
-  //   .then(res => {
-  //     console.log(res)
-  //     setAllProducts(res.data.products)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  // }, [searchKeyword])
+  useEffect(() => {
+    setAllProducts(searchResults);
+  }, [searchResults])
 
   // 하드코딩 ver
   const searchKeyword = '사과'
