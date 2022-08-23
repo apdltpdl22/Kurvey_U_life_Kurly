@@ -16,6 +16,7 @@ export const searchSlice = createSlice({
     },
 
     getSearchResults : (state, action) => {
+      console.log(action)
       state.searchResults = action.payload
     }
   }
@@ -24,6 +25,7 @@ export const searchSlice = createSlice({
 export const getSearchResultAsync = keyword => async dispatch => {
   try {
     const response = await axios.get('/api/v1/product/'+ keyword);
+    console.log('response', response)
     dispatch(getSearchResults(response.data))
   } catch (err) {
     console.log(err)

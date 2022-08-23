@@ -15,10 +15,6 @@ export default function SearchResult() {
   const [productId, setProductId] = useState(null);
   const searchResults = useSelector(searchResultsSelector)
 
-  useEffect(() => {
-    setAllProducts(searchResults);
-  }, [searchResults])
-
   // 하드코딩 ver
   const searchKeyword = '사과'
   // const allProducts = [
@@ -253,7 +249,7 @@ export default function SearchResult() {
           </h2>
 
           <div id="searchLists" className={styles.searchLists}>
-            {allProducts.map((list, index) => (
+            {searchResults && searchResults.map((list, index) => (
               <div className={styles.eachLists} 
               key={index}>
                 <div className={styles.text_group}>
