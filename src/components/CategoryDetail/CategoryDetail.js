@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import RecommendList from './RecommendList';
-import {useParams, useLocation} from 'react-router-dom';
+// import {useParams} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header';
@@ -50,7 +51,7 @@ function CategoryDetail(props) {
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
-  const {categoryId} = useParams();
+  // const {categoryId} = useParams();
   const location = useLocation();
 
   useEffect(() => {

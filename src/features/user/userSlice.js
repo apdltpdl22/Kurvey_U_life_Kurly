@@ -33,7 +33,6 @@ const userSlice = createSlice({
       state.error = null
     },
     [userLogin.fulfilled]: (state, { payload }) => {
-      console.log('payload', payload)
       state.loading = false
       state.userInfo = payload
       state.userToken = payload.userToken
