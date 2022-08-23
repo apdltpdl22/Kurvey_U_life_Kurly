@@ -1,4 +1,4 @@
-name: Develop Deploy Workflow
+name: Develop Deploy WorkFlow
 
 on: # 이벤트 트리거
   push: # push 이벤트 트리거
