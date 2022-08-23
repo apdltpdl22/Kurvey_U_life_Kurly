@@ -46,7 +46,8 @@ export default function SearchResult() {
                 <Link to={`./${list.category.id}`} 
                       state={{ 
                         products: list.products, 
-                        searchKeyword:searchKeyword 
+                        searchKeyword: searchKeyword,
+                        categoryName: list.category.name
                       }}  
                       className={styles.link}>
                   <span>{list.category.name}제품 더 보기</span>

@@ -49,12 +49,14 @@ function CategoryDetail(props) {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
-  const {category} = useParams();
+  const [categoryName, setCategoryName] = useState(null);
+  const {categoryId} = useParams();
   const location = useLocation();
 
   useEffect(() => {
     setProducts(location.state.products);
     setSearchKeyword(location.state.searchKeyword);
+    setCategoryName(location.state.categoryName);
   }, [location]);
 
   const openPaymentModal = productId => {
@@ -79,7 +81,7 @@ function CategoryDetail(props) {
           </div>
         </div>
         <div>
-          <h2>{category}에 해당하는 제품들</h2>
+          <h2>{categoryName}에 해당하는 제품들</h2>
           <div id="ItemList" className={styles.ItemList}>
             {products.map((item, index) => (
               <div id="ItemCard" className={styles.ItemCard} key={index}>
