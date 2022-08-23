@@ -1,19 +1,9 @@
-// export default function SurveyModal({open, close}) {
-//     return (
-//         open ? <h1 onClick={close}>안녕</h1> : null
-//     )
-// }
 import {useState} from 'react';
 
 import styles from './survey-modal.module.css';
 
-import VeganSrc from '../../assets/png/vegan.png';
-import BakeSrc from '../../assets/png/bake.png';
-import CocktailSrc from '../../assets/png/cocktail.png';
-import DumbbellSrc from '../../assets/png/dumbbell.png';
-import EnvironmentalismSrc from '../../assets/png/environmentalism.png';
-import SugarFreeSrc from '../../assets/png/sugar-free.png';
-import SupplementSrc from '../../assets/png/supplement.png';
+import {useSelector} from 'react-redux';
+import {surveySelector} from '../../features/survey/surveySlice';
 
 export default function SurveyModal({close}) {
   const [family, setFamily] = useState(null);
@@ -23,9 +13,13 @@ export default function SurveyModal({close}) {
   const [isPlant, setIsPlant] = useState(false);
   const [lifeStyles, setLifeStyles] = useState(new Set());
 
+  const surveyList = useSelector(surveySelector).data;
+  console.log('surveyList', surveyList);
   const submit = () => {
     console.log(family, isBaby, isDog, isCat, isPlant);
     console.log(lifeStyles);
+    console.log('surveyList', surveyList);
+
     close();
   };
 
@@ -36,9 +30,9 @@ export default function SurveyModal({close}) {
 
     const fakeItems = lifeStyles;
 
-    if (fakeItems.has(id)) fakeItems.delete(id);
+    if (fakeItems.has(id - 1)) fakeItems.delete(id - 1);
     else if (fakeItems.size === 3) return false;
-    else fakeItems.add(id);
+    else fakeItems.add(id - 1);
 
     setLifeStyles(fakeItems);
 
@@ -62,6 +56,18 @@ export default function SurveyModal({close}) {
       });
     }
   };
+
+  // const LifeStyleItem = ({key, item, type}) => {
+  //   return (
+  //     <button
+  //       onClick={() => lifeStyleOnClick(item.id)}
+  //       className="lifeStyleButton"
+  //     >
+  //       <img src={item.imageUrl} alt={item.question + '일러스트'} />
+  //       <p>{item.question}</p>
+  //     </button>
+  //   );
+  // };
 
   return (
     <div id="myModal" className={styles.modal}>
@@ -123,61 +129,80 @@ export default function SurveyModal({close}) {
         <div className={styles.inputBox}>
           자신의 생활과 가장 관련 있는 주제를 순서대로 3가지 골라주세요.
           {/* 버튼 OR 체크박스 */}
-          {/* <div> */}
           <div className={styles.lifeStyleBox}>
             <button
-              onClick={() => lifeStyleOnClick(0)}
+              onClick={() => lifeStyleOnClick(surveyList[0].id)}
               className="lifeStyleButton"
             >
-              <img src={VeganSrc} alt="채식주의 일러스트" />
-              <p>채식주의</p>
-            </button>
+              <img
+                src={surveyList[0].imageUrl}
+                alt={surveyList[0].question + '일러스트'}
+              />
+              <p>{surveyList[0].question}</p>
+            </button>{' '}
             <button
-              onClick={() => lifeStyleOnClick(1)}
+              onClick={() => lifeStyleOnClick(surveyList[1].id)}
               className="lifeStyleButton"
             >
-              <img src={BakeSrc} alt="베이킹 일러스트" />
-              <p>베이킹</p>
-            </button>
+              <img
+                src={surveyList[1].imageUrl}
+                alt={surveyList[1].question + '일러스트'}
+              />
+              <p>{surveyList[1].question}</p>
+            </button>{' '}
             <button
-              onClick={() => lifeStyleOnClick(2)}
+              onClick={() => lifeStyleOnClick(surveyList[2].id)}
               className="lifeStyleButton"
             >
-              <img src={CocktailSrc} alt="애주가 일러스트" />
-              <p>애주가</p>
-            </button>
+              <img
+                src={surveyList[2].imageUrl}
+                alt={surveyList[2].question + '일러스트'}
+              />
+              <p>{surveyList[2].question}</p>
+            </button>{' '}
             <button
-              onClick={() => lifeStyleOnClick(3)}
+              onClick={() => lifeStyleOnClick(surveyList[3].id)}
               className="lifeStyleButton"
             >
-              <img src={DumbbellSrc} alt="운동 일러스트" />
-              <p>운동</p>
+              <img
+                src={surveyList[3].imageUrl}
+                alt={surveyList[3].question + '일러스트'}
+              />
+              <p>{surveyList[3].question}</p>
             </button>
           </div>
           <div className={styles.lifeStyleBox}>
             <button
-              onClick={() => lifeStyleOnClick(4)}
+              onClick={() => lifeStyleOnClick(surveyList[4].id)}
               className="lifeStyleButton"
             >
-              <img src={EnvironmentalismSrc} alt="친환경 일러스트" />
-              <p>친환경</p>
-            </button>
+              <img
+                src={surveyList[4].imageUrl}
+                alt={surveyList[4].question + '일러스트'}
+              />
+              <p>{surveyList[4].question}</p>
+            </button>{' '}
             <button
-              onClick={() => lifeStyleOnClick(5)}
+              onClick={() => lifeStyleOnClick(surveyList[5].id)}
               className="lifeStyleButton"
             >
-              <img src={SugarFreeSrc} alt="저당식품 일러스트" />
-              <p>저당식품</p>
-            </button>
+              <img
+                src={surveyList[5].imageUrl}
+                alt={surveyList[5].question + '일러스트'}
+              />
+              <p>{surveyList[5].question}</p>
+            </button>{' '}
             <button
-              onClick={() => lifeStyleOnClick(6)}
+              onClick={() => lifeStyleOnClick(surveyList[6].id)}
               className="lifeStyleButton"
             >
-              <img src={SupplementSrc} alt="건강식품 일러스트" />
-              <p>건강식품</p>
+              <img
+                src={surveyList[6].imageUrl}
+                alt={surveyList[6].question + '일러스트'}
+              />
+              <p>{surveyList[6].question}</p>
             </button>
           </div>
-          {/* </div> */}
         </div>
         <button className={styles.save} onClick={submit}>
           저장
