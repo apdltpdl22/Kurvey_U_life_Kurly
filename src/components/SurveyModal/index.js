@@ -14,7 +14,7 @@ export default function SurveyModal({close}) {
   const [lifeStyles, setLifeStyles] = useState(new Set());
 
   const surveyList = useSelector(surveySelector).data;
-  console.log('surveyList', surveyList);
+  
   const submit = () => {
     console.log(family, isBaby, isDog, isCat, isPlant);
     console.log(lifeStyles);
