@@ -66,7 +66,7 @@ function Header(props) {
             value={searchInput}
             onChange={changeSearchInput}
           />
-          <button>검색</button>
+          <button></button>
         </form>
 
         <div className={styles.button_box}>
