@@ -4,6 +4,7 @@ import SurveyModal from './components/SurveyModal';
 import PaymentModal from './components/PaymentModal';
 import {useDispatch} from 'react-redux';
 import {getSurveyAsync} from './features/survey/surveySlice';
+
 function App() {
   const dispatch = useDispatch();
 

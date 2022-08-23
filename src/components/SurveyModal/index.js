@@ -5,34 +5,40 @@ import {useDispatch,useSelector} from 'react-redux';
 
 import styles from './survey-modal.module.css';
 import {saveSurveyAsync, surveySelector} from '../../features/survey/surveySlice';
+import { useNavigate } from 'react-router-dom';
 
-export default function SurveyModal({close}) {
+export default function SurveyModal({close, userId}) {
   const [lifeStyles, setLifeStyles] = useState(new Set());
 
   const dispatch = useDispatch();
+  const navigator = useNavigate();
   const {register, handleSubmit} = useForm();
   const surveyList = useSelector(surveySelector).data;
 
-  const submitForm = (data) => {
+  const submitForm = async (data) => {
     const req = {
       ...data,
-      select: surveyList
+      selects: Array.from(lifeStyles),
     }
 
-    dispatch(saveSurveyAsync(req));
-    close();
+    const response = await dispatch(saveSurveyAsync({req, userId, close}));
+    console.log('response', response)
+    if(response)
+    {
+      close();
+      navigator('/login')
+    }
   };
 
   const lifeStyleOnClick = id => {
     const buttonGroup = document.querySelectorAll('.lifeStyleButton');
     const colors = ['#483674', '#674ea7', '#b3a6d3'];
-    // console.log('buttonGroup', buttonGroup)
 
     const fakeItems = lifeStyles;
 
-    if (fakeItems.has(id - 1)) fakeItems.delete(id - 1);
+    if (fakeItems.has(id)) fakeItems.delete(id);
     else if (fakeItems.size === 3) return false;
-    else fakeItems.add(id - 1);
+    else fakeItems.add(id);
 
     setLifeStyles(fakeItems);
 
@@ -40,7 +46,7 @@ export default function SurveyModal({close}) {
       let colorIndex = 0;
 
       lifeStyles.forEach(index => {
-        const ele = buttonGroup[index];
+        const ele = buttonGroup[index-1];
         ele.style.backgroundColor = colors[colorIndex];
         ele.style.color = '#fff';
 
@@ -48,7 +54,7 @@ export default function SurveyModal({close}) {
       });
 
       buttonGroup.forEach((ele, index) => {
-        if (!lifeStyles.has(index)) {
+        if (!lifeStyles.has(index+1)) {
           ele.style.backgroundColor = '#fff';
           ele.style.color = '#000';
           ele.style.border = '1.5px solid #929292';
@@ -91,7 +97,6 @@ export default function SurveyModal({close}) {
             type="checkbox"
             id="check1"
             {...register('hasBaby')}
-            required
           />
           <label htmlFor="check1"></label>
         </div>
@@ -103,7 +108,6 @@ export default function SurveyModal({close}) {
               <input
                 type="checkbox"
                 id="dog"
-
                {...register('hasDog')}
               />
               <label htmlFor="dog"></label>
