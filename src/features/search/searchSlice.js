@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 const axios = require('axios');
 
 const initialState = {
-  searchKeyword: '사과',
+  searchKeyword: '',
   searchResults : []
 }
 
@@ -12,13 +12,13 @@ export const searchSlice = createSlice({
   initialState,
   reducers : {
     changeSearchKeyword : (state, action) => {
-      console.log('action:', action)
+      // console.log('action:', action)
       state.searchKeyword = action.payload
     },
 
     getSearchResults : (state, action) => {
-      console.log('action:', action)
-      state.searchResults = action.payload
+      // console.log('action:', action)
+      state.searchResults = action.payload.data
     }
   }
 });
@@ -34,6 +34,6 @@ export const getSearchResultAsync = keyword => async dispatch => {
 };
 
 export const {changeSearchKeyword, getSearchResults} = searchSlice.actions;
-export const searchKeywordSelector = state => state.searchKeyword;
-export const searchResultsSelector = state => state.searchResults;
+export const searchKeywordSelector = state => state.search.searchKeyword;
+export const searchResultsSelector = state => state.search.searchResults;
 export default searchSlice.reducer;

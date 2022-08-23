@@ -10,7 +10,7 @@ import Header from '../Header/Header'
 export default function SearchResult() {
   const [paymentModal, setPaymentModal] = useState(false);
   const [productId, setProductId] = useState(null);
-  const [searchKeyword, setSearchKeyword] = useState('사과');
+  const [searchKeyword, setSearchKeyword] = useState('');
   const [searchResults, setSearchResults] = useState([]);  
 
   const stateKeyword = useSelector(searchKeywordSelector)

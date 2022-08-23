@@ -13,6 +13,7 @@ function Header(props) {
     e.preventDefault();
     dispatch(changeSearchKeyword(searchInput)); 
     dispatch(getSearchResultAsync(searchInput));
+    console.log('검색')
   }
 
   return (
