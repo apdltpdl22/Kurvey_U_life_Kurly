@@ -46,4 +46,4 @@ Back-End: @[HoYoon-Lee](https://github.com/Kurvey/Server/commits?author=HoYoon-L
 
 ## 서비스 소개
 
-![컬리핵페스타 (3)](README.assets/컬리핵페스타 (3).png)
+![컬리핵페스타 (3)](https://user-images.githubusercontent.com/56299114/186279381-1a3cdf5f-25c9-490b-a6fd-7d3b5456d002.png)
