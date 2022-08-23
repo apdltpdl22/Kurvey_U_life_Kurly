@@ -72,6 +72,9 @@ export default function SurveyModal({close}) {
   return (
     <div id="myModal" className={styles.modal}>
       <form onSubmit={handleSubmit(submitForm)} className={styles.modalContent}>
+        <div className={styles.closeButton} >
+          <button type="button" onClick={close}>X</button>
+        </div>
         <div className={styles.inputBox}>
           가족은 구성원이 몇 명인가요?
           <input
