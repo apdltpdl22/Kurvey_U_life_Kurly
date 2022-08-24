@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import RecommendList from './RecommendList';
-import {useParams} from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+// import {useParams} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header';
-import defaultImg from '../../assets/jpg/default-image.jpg'
+import defaultImg from '../../assets/jpg/default-image.jpg';
+import {useDispatch} from 'react-redux';
+import {
+  getProductAsync,
+  resetProduct,
+} from '../../features/product/productSlice';
 import axios from 'axios';
 
 
@@ -48,7 +53,6 @@ function CategoryDetail(props) {
   //   },
   // ];
   const [paymentModal, setPaymentModal] = useState(false);
-  const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
@@ -56,6 +60,7 @@ function CategoryDetail(props) {
   const accessToken = localStorage.getItem('userToken')
   const {categoryId} = useParams();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setProducts(location.state.products);
@@ -78,10 +83,15 @@ function CategoryDetail(props) {
   }, [location, accessToken, categoryId]);
 
   const openPaymentModal = productId => {
-    setProductId(productId);
+    dispatch(getProductAsync(productId));
     setPaymentModal(true);
   };
-  
+
+  const closeModal = () => {
+    dispatch(resetProduct());
+    setPaymentModal(false);
+  };
+
   const onErrorImg = e => {
     e.target.src = defaultImg;
   };
@@ -106,7 +116,7 @@ function CategoryDetail(props) {
                 <div className={styles.imageBox}>
                   <img
                     className={styles.img}
-                    src={item.imageUrl? item.imageUrl : defaultImg}
+                    src={item.imageUrl ? item.imageUrl : defaultImg}
                     alt="제품 이미지"
                     onError={onErrorImg}
                   />
@@ -132,12 +142,7 @@ function CategoryDetail(props) {
               </div>
             ))}
           </div>
-          {paymentModal && (
-            <PaymentModal
-              productId={productId}
-              close={() => setPaymentModal(false)}
-            />
-          )}
+          {paymentModal && <PaymentModal close={closeModal} />}
         </div>
       </div>
     </>

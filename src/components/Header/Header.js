@@ -8,28 +8,37 @@ import {
   getSearchResultAsync,
 } from '../../features/search/searchSlice';
 import {logout, userSelector} from '../../features/user/userSlice';
+import {useNavigate} from 'react-router-dom';
 
 function Header(props) {
   const [searchInput, changeSearchInput] = useInput('');
   const [userName, setUserName] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userSelect = useSelector(userSelector);
 
   useEffect(() => {
-    console.log('userSelect', userSelect);
-    setUserName(userSelect.userName || (userSelect.userInfo && userSelect.userInfo.decode && userSelect.userInfo.decode.sub))
+    setUserName(
+      userSelect.userName ||
+        (userSelect.userInfo &&
+          userSelect.userInfo.decode &&
+          userSelect.userInfo.decode.sub),
+    );
   }, [userSelect]);
 
   function onSubmit(e) {
     e.preventDefault();
     dispatch(changeSearchKeyword(searchInput));
     dispatch(getSearchResultAsync(searchInput));
-    console.log('검색');
   }
 
   const logoutOnClick = () => {
     dispatch(logout());
-  }
+  };
+
+  const goHome = () => {
+    navigate('/');
+  };
 
   return (
     <div>
@@ -38,7 +47,9 @@ function Header(props) {
         {userSelect && (userSelect.userToken || userName) ? (
           <ul id={styles.menu}>
             <li>{userName} 님</li>
-            <li id={styles.logout} onClick={logoutOnClick}>로그아웃</li>
+            <li id={styles.logout} onClick={logoutOnClick}>
+              로그아웃
+            </li>
           </ul>
         ) : (
           <ul id={styles.menu}>
@@ -53,7 +64,12 @@ function Header(props) {
       </div>
       <div className={styles.header}>
         <div className={styles.logo_input_header}>
-          <img className={styles.logo} src={logo} alt="마켓컬리 로고" />
+          <img
+            className={styles.logo}
+            src={logo}
+            alt="마켓컬리 로고"
+            onClick={goHome}
+          />
           <button>마켓컬리</button>
           <button>뷰티컬리</button>
         </div>

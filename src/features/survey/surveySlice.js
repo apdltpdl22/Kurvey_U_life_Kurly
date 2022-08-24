@@ -24,19 +24,24 @@ export const getSurveyAsync = data => async dispatch => {
   }
 };
 
-export const saveSurveyAsync = ({req, userId, close}) => async dispatch => {
-  try {
-    const response = axios.post(`api/v1/lifestyle/${userId}`, {...req, numberOfFamily: Number(req.numberOfFamily)});
-    console.log(response);
+export const saveSurveyAsync =
+  ({req, userId, close}) =>
+  async dispatch => {
+    try {
+      const response = axios.post(`api/v1/lifestyle/${userId}`, {
+        ...req,
+        numberOfFamily: Number(req.numberOfFamily),
+      });
+      console.log(response);
 
-    // confirm toast
-    alert('설문조사가 저장되었습니다');
-    return true;
-  } catch (err) {
-    alert('설문조사가 저장되지 않았습니다');
-    return false;
-  }
-};
+      // confirm toast
+      alert('설문조사가 저장되었습니다');
+      return true;
+    } catch (err) {
+      alert('설문조사가 저장되지 않았습니다');
+      return false;
+    }
+  };
 
 export const {saveSurvey, getSurvey} = surveySlice.actions;
 export const surveySelector = state => state.survey;
