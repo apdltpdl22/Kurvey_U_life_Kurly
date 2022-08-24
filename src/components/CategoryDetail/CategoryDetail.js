@@ -65,7 +65,7 @@ function CategoryDetail(props) {
       }      
     })
     .then(res => {
-      console.log(res.data.products)
+      setRecommendations(res.data.products)
     })
     .catch(err => {
       // console.log('err', err.response.status)
