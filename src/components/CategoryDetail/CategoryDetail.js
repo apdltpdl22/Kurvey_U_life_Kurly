@@ -70,6 +70,7 @@ function CategoryDetail(props) {
     console.log('token:', accessToken, 'category:', categoryId)
     axios.get(`/api/v1/recommend/${categoryId}`, {
       headers: {
+        'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`
       }      
     })

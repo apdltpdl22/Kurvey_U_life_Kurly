@@ -31,6 +31,7 @@ export const purchaseProductAsync = productId => async dispatch => {
     const userToken = localStorage.getItem('userToken');
     const config = {
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${userToken}`,
       },
     };

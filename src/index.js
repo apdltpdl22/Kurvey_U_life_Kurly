@@ -13,7 +13,7 @@ import SearchResult from './components/SearchResult';
 import Category from './components/CategoryDetail/CategoryDetail';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://server.u-life-kurly.com/';
+axios.defaults.baseURL = 'http://3.39.153.128:8080';
 // axios.defaults.baseURL = 'http://server.u-life-kurly.com';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
