@@ -57,28 +57,10 @@ function CategoryDetail(props) {
   const {categoryId} = useParams();
   const location = useLocation();
 
-  // const getRecommendations = () => {
-  //   const accessToken = localStorage.getItem('userToken')
-  //   console.log('token:', accessToken, 'category:', categoryId)
-  //   axios.get(`/api/v1/recommend/${categoryId}`, {
-  //     headers: {
-  //         Authorization: `Bearer ${accessToken}`
-  //     }      
-  //   })
-  //   .then(res => {
-  //     console.log(res.data.products)
-  //   })
-  //   .catch(err => {
-  //     // console.log('err', err.response.status)
-  //     console.log('err', err.message)
-  //   })
-  // }
-
   useEffect(() => {
     setProducts(location.state.products);
     setSearchKeyword(location.state.searchKeyword);
     setCategoryName(location.state.categoryName);
-    // getRecommendations();
 
     console.log('token:', accessToken, 'category:', categoryId)
     axios.get(`/api/v1/recommend/${categoryId}`, {
