@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import RecommendList from './RecommendList';
-// import {useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
