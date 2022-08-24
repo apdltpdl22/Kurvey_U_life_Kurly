@@ -21,7 +21,9 @@
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   padding: 20px 60px 20px 60px;
-  width: 20%;
+  min-width: 20%;
+  max-width: 40%;
+  width: auto;
 
   border-radius: 2rem;
   box-shadow: 0 2rem 5rem 0 #00000040;
@@ -95,34 +97,34 @@
   vertical-align: 3px;
 }
 
-.buttonBox{
-    display: flex;
-    flex-direction: row;
-    font-family: "Noto Sans KR", "malgun gothic", AppleGothic, dotum, sans-serif;
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Noto Sans KR', 'malgun gothic', AppleGothic, dotum, sans-serif;
+  margin-top: 20px;
 }
 
-.buttonBox button{
-    width: 50%;
-    margin: 0px 4px;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 500;
-    display: block;
-    padding: 0px 10px;
-    text-align: center;
-    overflow: hidden;
-    height: 52px;
-    border-radius: 6px;
+.buttonBox button {
+  width: 50%;
+  margin: 0px 4px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  display: block;
+  padding: 0px 10px;
+  text-align: center;
+  overflow: hidden;
+  height: 52px;
+  border-radius: 6px;
 }
 
-.buttonBox button:first-child{
-    color: rgb(51, 51, 51);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(221, 221, 221);
+.buttonBox button:first-child {
+  color: rgb(51, 51, 51);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(221, 221, 221);
 }
-.buttonBox button:last-child{
-    color: rgb(255, 255, 255);
-    background-color: rgb(95, 0, 128);
-    border: 0px none;
-
+.buttonBox button:last-child {
+  color: rgb(255, 255, 255);
+  background-color: rgb(95, 0, 128);
+  border: 0px none;
 }
