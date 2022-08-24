@@ -8,10 +8,10 @@ import {
 export default function PaymentModal({close}) {
   const product = useSelector(productSelector).product;
   const dispatch = useDispatch();
-
   const purchase = () => {
-    dispatch(purchaseProductAsync(product.id));
+    setTimeout(() => {dispatch(purchaseProductAsync(product.id, close()))}, 1000);
   };
+ 
 
   return (
     <div id="myModal" className={styles.modal}>

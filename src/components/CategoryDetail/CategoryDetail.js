@@ -31,13 +31,14 @@ function CategoryDetail(props) {
     console.log('token:', accessToken, 'category:', categoryId)
     axios.get(`/api/v1/recommend/${categoryId}`, {
       headers: {
-        // 'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Origin' : true,
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : true,
         Authorization: `Bearer ${accessToken}`
       }
     })
     .then(res => {
       setRecommendations(res.data.products)
+      console.log('recommends: ',res.data.products)
     })
     .catch(err => {
       // console.log('err', err.response.status)
@@ -66,7 +67,7 @@ function CategoryDetail(props) {
           '<span>{searchKeyword}</span>'에 대한 검색결과
         </h2>
         <div id="Recommend" className={styles.Recommend}>
-          <h2>라이프스타일 맞춤 추천</h2>
+          <h2 className={styles.RecommendWords}>라이프스타일 맞춤 추천</h2>
           <div className={styles.RecommendList}>
             <RecommendList products={recommendations} />
           </div>

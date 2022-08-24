@@ -22,19 +22,30 @@ function RecommendList({products}) {
     }
   };
 
+  const userToken = localStorage.getItem('userToken')
+
   return (
     <div>
-      <Carousel className={styles.RecommendList}
-      responsive={responsive}
-      swipeable={false}
-      draggable={false}
-      ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      >
-      {products.map((item, index) => 
-        <Item item={item} key={index}/>
-      )}
-    </Carousel>
+      {userToken && products ? (   
+        <Carousel className={styles.RecommendList}
+        responsive={responsive}
+        swipeable={false}
+        draggable={false}
+        ssr={true} // means to render carousel on server-side.
+        infinite={true}
+        >
+        {products && products.map((item, index) => 
+          <Item item={item} key={index}/>
+        )}
+      </Carousel>
+      ) : userToken ? (
+        <>
+      <h2 className={styles.Prowords}>아직 라이프스타일이 닮은 사람을 찾지 못했네요!</h2>
+      <h2 className={styles.Prowords}>더 많은 친구들에게 마켓컬리를 소개해주세요</h2>
+      </>
+      ) : 
+      (<h2 className={styles.Prowords}>로그인을 해서 더 많은 추천 상품을 확인하세요!</h2>) }
+
   </div>
   );
 }
