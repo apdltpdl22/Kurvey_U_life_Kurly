@@ -22,16 +22,21 @@ export const getProductAsync = productId => async dispatch => {
   try {
     const response = await axios.get('/api/v1/product/' + productId);
     dispatch(setProduct(response.data.data));
+    localStorage.setItem('productId', response.data.data.id);
+    console.log(response.data.data.id);
   } catch (err) {
     console.log(err);
   }
 };
-export const purchaseProductAsync = ({productId, close}) => async (state, dispatch) => {
+export const purchaseProductAsync = ({productId, close}) => async (dispatch) => {
   try {
     const userToken = localStorage.getItem('userToken');
-    console.log('state', state)
     // console.log('purchase-userToken', userToken, 
     // 'productId:', productId)
+
+    const productId = localStorage.getItem('productId');
+    console.log('ppp', productId);
+    
     const config = {
       headers: {
         'Content-Type': 'application/json',
