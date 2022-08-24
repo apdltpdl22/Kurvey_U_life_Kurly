@@ -13,7 +13,7 @@ export const productSlice = createSlice({
       state.product = action.payload;
     },
     resetProduct: (state, action) => {
-      state.product = {};
+      // state.product = {};
     },
   },
 });
@@ -26,12 +26,16 @@ export const getProductAsync = productId => async dispatch => {
     console.log(err);
   }
 };
-export const purchaseProductAsync = productId => async dispatch => {
+export const purchaseProductAsync = ({productId, close}) => async (state, dispatch) => {
   try {
     const userToken = localStorage.getItem('userToken');
+    console.log('state', state)
+    // console.log('purchase-userToken', userToken, 
+    // 'productId:', productId)
     const config = {
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : true,
         Authorization: `Bearer ${userToken}`,
       },
     };
@@ -44,6 +48,8 @@ export const purchaseProductAsync = productId => async dispatch => {
       config,
     );
     console.log('purchaseProductAsync response', response);
+    alert('결제가 완료되었습니다.')
+    close();
   } catch (err) {
     console.log(err);
   }

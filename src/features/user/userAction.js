@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
+
 import jwt_decode from 'jwt-decode';
 
 export const userLogin = createAsyncThunk(
@@ -10,7 +11,7 @@ export const userLogin = createAsyncThunk(
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials':true
+          'Access-Control-Allow-Credentials': true,
         },
       };
 
@@ -48,6 +49,7 @@ export const registerUser = createAsyncThunk(
       const config = {
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
         },
       };
 
