@@ -53,11 +53,33 @@ function CategoryDetail(props) {
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
+  const accessToken = localStorage.getItem('userToken')
   const {categoryId} = useParams();
   const location = useLocation();
 
-  const getRecommendations = () => {
-    const accessToken = localStorage.getItem('userToken')
+  // const getRecommendations = () => {
+  //   const accessToken = localStorage.getItem('userToken')
+  //   console.log('token:', accessToken, 'category:', categoryId)
+  //   axios.get(`/api/v1/recommend/${categoryId}`, {
+  //     headers: {
+  //         Authorization: `Bearer ${accessToken}`
+  //     }      
+  //   })
+  //   .then(res => {
+  //     console.log(res.data.products)
+  //   })
+  //   .catch(err => {
+  //     // console.log('err', err.response.status)
+  //     console.log('err', err.message)
+  //   })
+  // }
+
+  useEffect(() => {
+    setProducts(location.state.products);
+    setSearchKeyword(location.state.searchKeyword);
+    setCategoryName(location.state.categoryName);
+    // getRecommendations();
+
     console.log('token:', accessToken, 'category:', categoryId)
     axios.get(`/api/v1/recommend/${categoryId}`, {
       headers: {
@@ -71,14 +93,7 @@ function CategoryDetail(props) {
       // console.log('err', err.response.status)
       console.log('err', err.message)
     })
-  }
-
-  useEffect(() => {
-    setProducts(location.state.products);
-    setSearchKeyword(location.state.searchKeyword);
-    setCategoryName(location.state.categoryName);
-    getRecommendations();
-  }, [location]);
+  }, [location, accessToken, categoryId]);
 
   const openPaymentModal = productId => {
     setProductId(productId);
