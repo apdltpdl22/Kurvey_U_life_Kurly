@@ -14,6 +14,7 @@ import Category from './components/CategoryDetail/CategoryDetail';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://server.u-life-kurly.com/';
+// axios.defaults.baseURL = 'http://server.u-life-kurly.com';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
