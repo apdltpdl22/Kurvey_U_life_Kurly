@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import RecommendList from './RecommendList';
-import {useParams} from 'react-router-dom';
-import {useLocation} from 'react-router-dom';
+import {useParams, useLocation} from 'react-router-dom';
 import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header';
@@ -13,45 +12,7 @@ import {
 } from '../../features/product/productSlice';
 import axios from 'axios';
 
-
 function CategoryDetail(props) {
-  // const recommendations = [
-  //   {
-  //     id: 1,
-  //     productName: '[프레벨롱]국산 과일로 만든 퓨레 9종',
-  //     cost: 4500,
-  //   },
-  //   {
-  //     id: 2,
-  //     productName: '[돈시몬]과일 주스 1L 3종',
-  //     cost: 5480,
-  //   },
-  //   {
-  //     id: 3,
-  //     productName: '[올프레쉬] 컷팅과일 145g(소)',
-  //     cost: 3990,
-  //   },
-  //   {
-  //     id: 4,
-  //     productName: '[미아논나] 애플잠봉 샌드위치',
-  //     cost: 0,
-  //   },
-  //   {
-  //     id: 5,
-  //     productName: '[돈시몬]과일 주스 1L 3종',
-  //     cost: 5480,
-  //   },
-  //   {
-  //     id: 6,
-  //     productName: '[파스키에]노르망디 타르트',
-  //     cost: 9980,
-  //   },
-  //   {
-  //     id: 7,
-  //     productName: '[채움]국산과채주스 4종',
-  //     cost: 12600,
-  //   },
-  // ];
   const [paymentModal, setPaymentModal] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
@@ -70,8 +31,10 @@ function CategoryDetail(props) {
     console.log('token:', accessToken, 'category:', categoryId)
     axios.get(`/api/v1/recommend/${categoryId}`, {
       headers: {
-          Authorization: `Bearer ${accessToken}`
-      }      
+        // 'Content-Type': 'application/json',
+        // 'Access-Control-Allow-Origin' : true,
+        Authorization: `Bearer ${accessToken}`
+      }
     })
     .then(res => {
       setRecommendations(res.data.products)
