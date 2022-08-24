@@ -34,7 +34,7 @@ function CategoryDetail(props) {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : true,
         Authorization: `Bearer ${accessToken}`
-      }
+      }     
     })
     .then(res => {
       setRecommendations(res.data.products)
