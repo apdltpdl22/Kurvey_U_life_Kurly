@@ -8,7 +8,6 @@ import defaultImg from '../../assets/jpg/default-image.jpg';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   searchKeywordSelector,
-  searchResultsSelector,
 } from '../../features/search/searchSlice';
 import {
   getProductAsync,
@@ -30,14 +29,14 @@ function CategoryDetail(props) {
   const stateKeyword = useSelector(searchKeywordSelector);
   const navigate = useNavigate();
 
-useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      navigate(-1);
-      console.log('뒤로가기')
-    }
-  }, [stateKeyword]);
+  useEffect(() => {
+      if (isInitialMount.current) {
+        isInitialMount.current = false;
+      } else {
+        navigate(-1);
+        console.log('뒤로가기');
+      }
+    }, [stateKeyword]);
 
 
   useEffect(() => {
