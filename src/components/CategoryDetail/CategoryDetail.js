@@ -1,11 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import RecommendList from './RecommendList';
-import {useParams, useLocation} from 'react-router-dom';
+import {useParams, useLocation, useNavigate} from 'react-router-dom';
 import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header';
 import defaultImg from '../../assets/jpg/default-image.jpg';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  searchKeywordSelector,
+  searchResultsSelector,
+} from '../../features/search/searchSlice';
 import {
   getProductAsync,
   resetProduct,
@@ -22,6 +26,19 @@ function CategoryDetail(props) {
   const {categoryId} = useParams();
   const location = useLocation();
   const dispatch = useDispatch();
+  const isInitialMount = useRef(true);
+  const stateKeyword = useSelector(searchKeywordSelector);
+  const navigate = useNavigate();
+
+useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      navigate(-1);
+      console.log('뒤로가기')
+    }
+  }, [stateKeyword]);
+
 
   useEffect(() => {
     setProducts(location.state.products);
