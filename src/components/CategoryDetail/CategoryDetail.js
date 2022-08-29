@@ -30,14 +30,13 @@ function CategoryDetail(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-      if (isInitialMount.current) {
-        isInitialMount.current = false;
-      } else {
-        navigate(-1);
-        console.log('뒤로가기');
-      }
-    }, [stateKeyword]);
-
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      navigate(-1);
+      console.log('뒤로가기');
+    } // eslint-disable-next-line
+  }, [stateKeyword]);
 
   useEffect(() => {
     setProducts(location.state.products);
