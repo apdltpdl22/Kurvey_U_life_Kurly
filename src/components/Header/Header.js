@@ -34,6 +34,8 @@ function Header(props) {
 
   const logoutOnClick = () => {
     dispatch(logout());
+    localStorage.clear();
+    window.location.reload();
   };
 
   const goHome = () => {
