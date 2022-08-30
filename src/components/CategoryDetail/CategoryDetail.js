@@ -64,8 +64,7 @@ function CategoryDetail(props) {
       setRecommendations(res.data.data)
     })
     .catch(err => {
-      // console.log('err', err.response.status)
-      console.log('err', err.message)
+      console.log('err', err.response.status)
     })
   }, [location, accessToken, categoryId]);
 
@@ -100,12 +99,12 @@ function CategoryDetail(props) {
           '<span>{searchKeyword}</span>'에 대한 검색결과
         </h2>
         <div id="Recommend" className={styles.Recommend}>
-          <h2 className={styles.RecommendWords}>라이프스타일 맞춤 추천</h2>
+          <h2>라이프스타일 맞춤 추천</h2>
           <div className={styles.RecommendList}>
             <RecommendList products={recommendations} />
           </div>
         </div>
-        <div>
+        <div className={styles.Box}>
           <h2>{categoryName}에 해당하는 제품들</h2>
           <div id="ItemList" className={styles.ItemList}>
             {products.map((item, index) => (
