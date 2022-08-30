@@ -3,6 +3,7 @@ import RecommendList from './RecommendList';
 import {useParams, useLocation, useNavigate} from 'react-router-dom';
 import styles from './category-detail.module.css';
 import PaymentModal from '../PaymentModal';
+import MySurveyModal from '../MySurveyModal';
 import Header from '../Header/Header';
 import defaultImg from '../../assets/jpg/default-image.jpg';
 import {useDispatch, useSelector} from 'react-redux';
@@ -17,6 +18,7 @@ import axios from 'axios';
 
 function CategoryDetail(props) {
   const [paymentModal, setPaymentModal] = useState(false);
+  const [mySurveyModal, setMySurveyModal] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
@@ -71,12 +73,17 @@ function CategoryDetail(props) {
     setPaymentModal(false);
   };
 
+  const openMySurveyModal = () => {
+    console.log('hi 1')
+    setMySurveyModal(true)
+  }
+
   const onErrorImg = e => {
     e.target.src = defaultImg;
   };
   return (
     <>
-      <Header />
+      <Header openMySurveyModal={openMySurveyModal}/>
       <div className={styles.board}>
         <h2 className={styles.searchKeyword}>
           '<span>{searchKeyword}</span>'에 대한 검색결과
@@ -121,9 +128,10 @@ function CategoryDetail(props) {
               </div>
             ))}
           </div>
-          {paymentModal && <PaymentModal close={closeModal} />}
         </div>
       </div>
+      {paymentModal && <PaymentModal close={closeModal} />}
+      {mySurveyModal && <MySurveyModal close={setMySurveyModal(false)} />}
     </>
   );
 }

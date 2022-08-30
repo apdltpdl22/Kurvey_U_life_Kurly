@@ -17,8 +17,23 @@ export const surveySlice = createSlice({
 
 export const getSurveyAsync = data => async dispatch => {
   try {
-    const response = await axios.get('api/v1/lifestyle', data);
+    const response = await axios.get('api/v1/lifestyle/question', data);
     dispatch(getSurvey(response.data.data));
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+export const getUserSurveyDetailAsync = data => async dispatch => {
+  try {
+    const accessToken = localStorage.getItem('userToken');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': true,
+      Authorization: `Bearer ${accessToken}`,
+    };
+    const response = await axios.get('api/v1/lifestyle', headers);
+    console.log('response', response);
   } catch (err) {
     throw new Error(err);
   }

@@ -10,7 +10,7 @@ import {
 import {logout, userSelector} from '../../features/user/userSlice';
 import {useNavigate} from 'react-router-dom';
 
-function Header(props) {
+function Header({openMySurveyModal}) {
   const [searchInput, changeSearchInput] = useInput('');
   const [userName, setUserName] = useState(null);
   const dispatch = useDispatch();
@@ -42,6 +42,8 @@ function Header(props) {
     navigate('/');
   };
 
+
+
   return (
     <div>
       <div className={styles.login_signup_btns}>
@@ -49,6 +51,9 @@ function Header(props) {
         {userSelect && (userSelect.userToken || userName) ? (
           <ul id={styles.menu}>
             <li>{userName} 님</li>
+            <li onClick={openMySurveyModal}>
+              <u>라이프 스타일</u>
+            </li>
             <li id={styles.logout} onClick={logoutOnClick}>
               로그아웃
             </li>
