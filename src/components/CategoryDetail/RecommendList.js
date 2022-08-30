@@ -3,7 +3,7 @@ import Item from './RecommendItem'
 import styles from './recommend-list.module.css'
 import Carousel from 'react-multi-carousel';
 
-function RecommendList({products}) {
+function RecommendList({products, errMsg}) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -22,11 +22,11 @@ function RecommendList({products}) {
     }
   };
 
-  const userToken = localStorage.getItem('userToken')
+  // const userToken = localStorage.getItem('userToken')
 
   return (
     <div className={styles.Recommend}>
-      {userToken && products ? (   
+      {!errMsg && products ? (   
         <Carousel className={styles.RecommendList}
         responsive={responsive}
         swipeable={false}
@@ -38,7 +38,7 @@ function RecommendList({products}) {
           <Item item={item} key={index}/>
         )}
       </Carousel>
-      ) : userToken ? (
+      ) : errMsg !== 403 ? (
         <>
       <h2 className={styles.Prowords}>아직 라이프스타일이 닮은 사람을 찾지 못했네요!</h2>
       <h2 className={styles.Prowords}>더 많은 친구들에게 마켓컬리를 소개해주세요</h2>
