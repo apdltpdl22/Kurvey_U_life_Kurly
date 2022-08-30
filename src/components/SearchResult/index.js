@@ -11,11 +11,13 @@ import {
 import styles from './search-result.module.css';
 import ProductList from './ProductList';
 import {Link} from 'react-router-dom';
-import PaymentModal from '../PaymentModal';
 import Header from '../Header/Header';
+import PaymentModal from '../PaymentModal';
+import MySurveyModal from '../MySurveyModal';
 
 export default function SearchResult() {
   const [paymentModal, setPaymentModal] = useState(false);
+  const [mySurveyModal, setMySurveyModal] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -39,11 +41,18 @@ export default function SearchResult() {
     dispatch(resetProduct());
     setPaymentModal(false);
   };
+  
+  const openMySurveyModal = () => {
+    setMySurveyModal(true);
+  }
+  const closeySurveyModal = () => {
+    setMySurveyModal(false);
+  }
 
   // 장바구니 버튼 클릭 시 바로 구매
   return (
     <>
-      <Header />
+      <Header openMySurveyModal={openMySurveyModal} />
       <div id="seach_result_page" className={styles.board}>
         <div className={styles.searchResult}>
           <h2 className={styles.searchKeyword}>
@@ -79,6 +88,7 @@ export default function SearchResult() {
         </div>
       </div>
       {paymentModal && <PaymentModal close={closeModal} />}
+      {mySurveyModal && <MySurveyModal close={closeySurveyModal} />}
     </>
   );
 }

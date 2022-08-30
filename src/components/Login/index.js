@@ -5,6 +5,7 @@ import { userLogin } from '../../features/user/userAction'
 import { useEffect } from 'react'
 import Error from '../Axios/Error'
 import styles from './login.module.css'
+import { getSurveyAsync, getUserSurveyDetailAsync } from '../../features/survey/surveySlice'
 
 
 export default function Login(props) {
@@ -16,10 +17,11 @@ export default function Login(props) {
 
   useEffect(() => {
     if (userInfo) {
-      console.log('로그인 성공')
+      dispatch(getSurveyAsync());
+      dispatch(getUserSurveyDetailAsync());
       navigate('/')
     }
-  }, [navigate, userInfo]);
+  }, [navigate, dispatch, userInfo]);
 
   const submitForm = (data) => {
     dispatch(userLogin(data))

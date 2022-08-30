@@ -16,7 +16,11 @@
   color: #545454;
   font-size: 13px;
   text-decoration: none;
-  margin-right: 12px;
+  margin-right: 18px;
+}
+
+.login_signup_btns #menu li:nth-child(2) {
+  cursor: pointer;
 }
 
 .login_signup_btns #menu #logout{
