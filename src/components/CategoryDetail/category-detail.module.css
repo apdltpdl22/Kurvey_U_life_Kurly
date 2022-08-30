@@ -9,10 +9,11 @@
 .Recommend {
   margin-bottom:90px;
   display: flex;
-  width: 70%;
   flex-direction: column;
+  width: 66%;
   justify-content: center;
 }
+
 
 .RecommendList{
   text-align: center;
