@@ -15,6 +15,7 @@ import {
   resetProduct,
 } from '../../features/product/productSlice';
 import axios from 'axios';
+import { getSurveyAsync,getUserSurveyDetailAsync } from '../../features/survey/surveySlice';
 
 function CategoryDetail(props) {
   const [paymentModal, setPaymentModal] = useState(false);
@@ -39,6 +40,11 @@ function CategoryDetail(props) {
       console.log('뒤로가기');
     } // eslint-disable-next-line
   }, [stateKeyword]);
+
+  useEffect(()=> {
+    dispatch(getSurveyAsync());
+    dispatch(getUserSurveyDetailAsync());
+  },[dispatch])
 
   useEffect(() => {
     setProducts(location.state.products);
@@ -78,7 +84,8 @@ function CategoryDetail(props) {
   }
 
   const closeMySurveyModal = () => {
-    setMySurveyModal(true);
+    console.log('Category Close')
+    setMySurveyModal(false);
   }
 
   const onErrorImg = e => {

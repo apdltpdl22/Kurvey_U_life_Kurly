@@ -14,6 +14,7 @@ import {Link} from 'react-router-dom';
 import Header from '../Header/Header';
 import PaymentModal from '../PaymentModal';
 import MySurveyModal from '../MySurveyModal';
+import { getUserSurveyDetailAsync, getSurveyAsync } from '../../features/survey/surveySlice';
 
 export default function SearchResult() {
   const [paymentModal, setPaymentModal] = useState(false);
@@ -25,6 +26,12 @@ export default function SearchResult() {
   const stateResults = useSelector(searchResultsSelector);
 
   const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(getSurveyAsync());
+    dispatch(getUserSurveyDetailAsync());
+  },[dispatch])
+
 
   useEffect(() => {
     setSearchKeyword(stateKeyword);
@@ -46,6 +53,7 @@ export default function SearchResult() {
     setMySurveyModal(true);
   }
   const closeySurveyModal = () => {
+    console.log('SurveyModal Close')
     setMySurveyModal(false);
   }
 
