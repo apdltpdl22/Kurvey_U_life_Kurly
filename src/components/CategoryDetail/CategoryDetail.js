@@ -24,7 +24,6 @@ function CategoryDetail(props) {
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
-  const [errMsg, setErrMsg] = useState(null);
   const accessToken = localStorage.getItem('userToken')
   const {categoryId} = useParams();
   const location = useLocation();
@@ -66,7 +65,6 @@ function CategoryDetail(props) {
     })
     .catch(err => {
       console.log('err', err.response.status)
-      setErrMsg(err.response.status)
     })
   }, [location, accessToken, categoryId]);
 
@@ -103,7 +101,7 @@ function CategoryDetail(props) {
         <div id="Recommend" className={styles.Recommend}>
           <h2>라이프스타일 맞춤 추천</h2>
           <div className={styles.RecommendList}>
-            <RecommendList products={recommendations} errMsg={errMsg}/>
+            <RecommendList products={recommendations} />
           </div>
         </div>
         <div className={styles.Box}>
