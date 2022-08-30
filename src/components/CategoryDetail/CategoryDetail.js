@@ -18,7 +18,7 @@ import axios from 'axios';
 
 function CategoryDetail(props) {
   const [paymentModal, setPaymentModal] = useState(false);
-  const [mySurveyModal, setMySurveyModal] = useState(true);
+  const [mySurveyModal, setMySurveyModal] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
