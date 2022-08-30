@@ -25,7 +25,7 @@ function RecommendList({products}) {
   const userToken = localStorage.getItem('userToken')
 
   return (
-    <div>
+    <div className={styles.Recommend}>
       {userToken && products ? (   
         <Carousel className={styles.RecommendList}
         responsive={responsive}

@@ -21,6 +21,20 @@
 
 }
 
+@media (max-width:1300px) {
+  .board {
+    margin: 0 auto;
+  }
+  .Recommend {
+    width: 90vw;
+  }
+  .Box{
+    width: 90vw;
+  }  
+  .ItemList{
+    grid-template-columns:450px 1fr;
+  }
+}
 .ItemList{
   display: grid;
   grid-template-columns: 450px 450px 450px;
