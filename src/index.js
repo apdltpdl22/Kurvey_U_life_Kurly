@@ -13,18 +13,16 @@ import SearchResult from './components/SearchResult';
 import Category from './components/CategoryDetail/CategoryDetail';
 import axios from 'axios';
 
-import App from './App'
-
 axios.defaults.baseURL = 'http://3.39.153.128:8080';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="/" element={<App />} />
-        <Route path="/search-result" element={<SearchResult />} />
+        <Route path="/" element={<SearchResult />} />
         <Route path="/:categoryId" element={<Category />} />
       </Routes>
     </BrowserRouter>

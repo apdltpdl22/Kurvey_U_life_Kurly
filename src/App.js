@@ -36,7 +36,7 @@ function App() {
         <br />
         <Link to="signup">SignUp</Link>
         <br />
-        <Link to="/search-result">SearchResult</Link>
+        <Link to="/">SearchResult</Link>
       </nav>
     </div>
   );

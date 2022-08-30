@@ -1,13 +1,18 @@
 import {useEffect} from 'react';
 import styles from './my-survey-modal.module.css';
-import {useSelector} from 'react-redux';
-import {mySurveySelector, surveySelector} from '../../features/survey/surveySlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {getSurveyAsync, getUserSurveyDetailAsync, mySurveySelector, surveySelector} from '../../features/survey/surveySlice';
 
 const MySurveyModal = ({close}) => {
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(getSurveyAsync());
+    dispatch(getUserSurveyDetailAsync());
+  },[dispatch])
+
   const surveyList = useSelector(surveySelector).data;
   const mySurvey = useSelector(mySurveySelector);
-
-  console.log('mySurvey',mySurvey)
 
   useEffect(()=> {
     const buttonGroup = document.querySelectorAll('.lifeStyleButton');

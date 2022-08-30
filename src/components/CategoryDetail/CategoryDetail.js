@@ -18,7 +18,7 @@ import axios from 'axios';
 
 function CategoryDetail(props) {
   const [paymentModal, setPaymentModal] = useState(false);
-  const [mySurveyModal, setMySurveyModal] = useState(false);
+  const [mySurveyModal, setMySurveyModal] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState(null);
   const [categoryName, setCategoryName] = useState(null);
@@ -74,13 +74,17 @@ function CategoryDetail(props) {
   };
 
   const openMySurveyModal = () => {
-    console.log('hi 1')
-    setMySurveyModal(true)
+    setMySurveyModal(true);
+  }
+
+  const closeMySurveyModal = () => {
+    setMySurveyModal(true);
   }
 
   const onErrorImg = e => {
     e.target.src = defaultImg;
   };
+  
   return (
     <>
       <Header openMySurveyModal={openMySurveyModal}/>
@@ -131,7 +135,7 @@ function CategoryDetail(props) {
         </div>
       </div>
       {paymentModal && <PaymentModal close={closeModal} />}
-      {mySurveyModal && <MySurveyModal close={setMySurveyModal(false)} />}
+      {mySurveyModal && <MySurveyModal close={closeMySurveyModal} />}
     </>
   );
 }

@@ -43,8 +43,10 @@ export default function SearchResult() {
   };
   
   const openMySurveyModal = () => {
-    setMySurveyModal(true)
-    console.log('hi 2')
+    setMySurveyModal(true);
+  }
+  const closeySurveyModal = () => {
+    setMySurveyModal(false);
   }
 
   // 장바구니 버튼 클릭 시 바로 구매
@@ -86,7 +88,7 @@ export default function SearchResult() {
         </div>
       </div>
       {paymentModal && <PaymentModal close={closeModal} />}
-      {mySurveyModal && <MySurveyModal close={setMySurveyModal(false)} />}
+      {mySurveyModal && <MySurveyModal close={closeySurveyModal} />}
     </>
   );
 }

@@ -11,7 +11,6 @@ export default function PaymentModal({close}) {
   const purchase = () => {
     setTimeout(() => {dispatch(purchaseProductAsync(product.id, close()))}, 1000);
   };
- 
 
   return (
     <div id="myModal" className={styles.modal}>
