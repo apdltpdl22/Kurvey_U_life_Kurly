@@ -185,7 +185,8 @@ input[id='dog']:checked + label::after,
 input[id='cat']:checked + label::after,
 input[id='plant']:checked + label::after {
   content: '✓';
-  font-size: 2.125px;
+  
+  font-size: 28.125px;
   font-weight: 800;
   width: 24px;
   height: 30px;

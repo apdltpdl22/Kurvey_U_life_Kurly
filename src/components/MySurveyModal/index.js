@@ -1,9 +1,31 @@
+import {useEffect} from 'react';
 import styles from './my-survey-modal.module.css';
 import {useSelector} from 'react-redux';
-import {surveySelector} from '../../features/survey/surveySlice';
+import {mySurveySelector, surveySelector} from '../../features/survey/surveySlice';
 
 const MySurveyModal = ({close}) => {
   const surveyList = useSelector(surveySelector).data;
+  const mySurvey = useSelector(mySurveySelector);
+
+  console.log('mySurvey',mySurvey)
+
+  useEffect(()=> {
+    const buttonGroup = document.querySelectorAll('.lifeStyleButton');
+    const colors = ['#483674', '#674ea7', '#b3a6d3'];
+
+    const selectedLifeStyle = mySurvey.selects;
+
+    let colorIndex = 0;
+    selectedLifeStyle.forEach(element => {
+      const ele = buttonGroup[element-1];
+      ele.style.backgroundColor = colors[colorIndex];
+      ele.style.color = '#fff';
+      ele.style.border = 'none'
+
+      colorIndex++;
+    });
+  }, [mySurvey])
+
   return (
     <div id="myModal" className={styles.modal}>
       <form className={styles.modalContent}>
@@ -14,11 +36,11 @@ const MySurveyModal = ({close}) => {
         </div>
         <div className={styles.inputBox}>
           가족은 구성원이 몇 명인가요?
-          <input type="number" className={styles.inputNumber} required />명
+          <input type="number" className={styles.inputNumber} value={mySurvey.numberOfFamily} required readOnly/>명
         </div>
         <div className={styles.inputBox}>
           영유아 자녀가 있나요?
-          <input type="checkbox" id="check1" />
+          <input type="checkbox" id="check1" checked={mySurvey.hasBaby} readOnly/>
           <label htmlFor="check1"></label>
         </div>
         <div className={styles.inputBox}>
@@ -26,17 +48,17 @@ const MySurveyModal = ({close}) => {
           <div className={styles.checkBoxGroup}>
             <div>
               🐶 강아지
-              <input type="checkbox" id="dog" />
+              <input type="checkbox" id="dog" checked={mySurvey.hasDog} readOnly/>
               <label htmlFor="dog"></label>
             </div>
             <div>
               😺 고양이
-              <input type="checkbox" id="cat" />
+              <input type="checkbox" id="cat" checked={mySurvey.hasCat} readOnly/>
               <label htmlFor="cat"></label>
             </div>
             <div>
               🌿 반려식물
-              <input type="checkbox" id="plant" />
+              <input type="checkbox" id="plant" checked={mySurvey.hasPlant} readOnly/>
               <label htmlFor="plant"></label>
             </div>
           </div>
@@ -98,9 +120,6 @@ const MySurveyModal = ({close}) => {
             </button>
           </div>
         </div>
-        <button type="submit" className={styles.save}>
-          저장
-        </button>
       </form>
     </div>
   );
