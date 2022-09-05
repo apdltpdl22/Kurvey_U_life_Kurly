@@ -22,6 +22,7 @@
 
 
 
+
 ## 팀 소개
 
 ### <span style='color:pink'>`Team 'Kurvey'`</span>
@@ -46,3 +47,7 @@ Back-End: @[HoYoon-Lee](https://github.com/HoYoon-Lee) @[zzuub](https://github.c
 ## 서비스 소개
 
 ![Readme이미지](https://user-images.githubusercontent.com/56299114/188492976-0837d607-5764-4734-810b-1211fa779f15.png)
+
+## 서비스 시연 영상
+
+[![Video Label](http://img.youtube.com/vi/WTkJwl-K1K4/0.jpg)](https://youtu.be/WTkJwl-K1K4)
