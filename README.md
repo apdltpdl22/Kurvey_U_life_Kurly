@@ -45,4 +45,4 @@ Front-End: @[Leemainsw](https://github.com/Leemainsw), @[apdltpdl22](https://git
 Back-End: @[HoYoon-Lee](https://github.com/HoYoon-Lee) @[zzuub](https://github.com/zzuub)
 ## 서비스 소개
 
-![컬리핵페스타 (3)](https://user-images.githubusercontent.com/56299114/186279381-1a3cdf5f-25c9-490b-a6fd-7d3b5456d002.png)
+![Readme이미지](https://user-images.githubusercontent.com/56299114/188492976-0837d607-5764-4734-810b-1211fa779f15.png)
