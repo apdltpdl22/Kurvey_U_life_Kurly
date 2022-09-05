@@ -50,4 +50,4 @@ Back-End: @[HoYoon-Lee](https://github.com/HoYoon-Lee) @[zzuub](https://github.c
 
 ## 서비스 시연 영상 (이미지 클릭 시 유튜브로 이동)
 
-[![Video Label](http://img.youtube.com/vi/WTkJwl-K1K4/0.jpg)
+[![Video Label](http://img.youtube.com/vi/WTkJwl-K1K4/0.jpg)](https://youtu.be/WTkJwl-K1K4)
