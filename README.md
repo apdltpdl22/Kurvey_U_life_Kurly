@@ -46,7 +46,7 @@ Front-End: @[Leemainsw](https://github.com/Leemainsw), @[apdltpdl22](https://git
 Back-End: @[HoYoon-Lee](https://github.com/HoYoon-Lee) @[zzuub](https://github.com/zzuub)
 ## 서비스 소개
 
-![Readme이미지](https://user-images.githubusercontent.com/56299114/188492976-0837d607-5764-4734-810b-1211fa779f15.png)
+![Readme이미지](https://user-images.githubusercontent.com/56299114/188657186-4af380ce-58ae-467b-b97f-3123245cd3df.png)
 
 ## 서비스 시연 영상 (이미지 클릭 시 유튜브로 이동)
 
