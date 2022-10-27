@@ -3,7 +3,7 @@
 
 
 서비스 접속 주소 : http://frontend.u-life-kurly.com/
-
+프로젝트 회고 (블로그) : https://5myohan.tistory.com/81
 
 
 ## 기술 스택
